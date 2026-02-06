@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
 const geistSans = Geist({
@@ -59,7 +58,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${quicksand.variable} ${msMadi.variable} ${comforta.variable} ${audiowide.variable}  antialiased`}
       >
-         <Navbar />
          
          <SmoothScrolling>
             {children}

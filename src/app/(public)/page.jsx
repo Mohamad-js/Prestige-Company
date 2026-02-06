@@ -1,6 +1,12 @@
+'use client'
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
+
+
+
 export default function Home() {
+
    return (
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center bg-white overflow-hidden">
          <div className="fixed top-0 w-full h-dvh flex justify-center items-center">
