@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide } from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide, Rubik_Marker_Hatch } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
@@ -47,6 +47,13 @@ const audiowide = Audiowide({
    display: "swap",
 });
 
+const marker = Rubik_Marker_Hatch({
+   weight: "400",
+   variable: "--font-marker",
+   subsets: ["latin"],
+   display: "swap",
+});
+
 export const metadata = {
    title: "Prestige Modeling",
    description: "The Place Where Fashion Was Born Again",
@@ -56,7 +63,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${quicksand.variable} ${msMadi.variable} ${comforta.variable} ${audiowide.variable}  antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${quicksand.variable} ${msMadi.variable} ${comforta.variable} ${audiowide.variable} ${marker.variable}  antialiased`}
       >
          
          <SmoothScrolling>

@@ -9,17 +9,24 @@ export default function Home() {
 
    return (
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center bg-white overflow-hidden">
-         <div className="fixed top-0 w-full h-dvh flex justify-center items-center">
-            <Image className="custom_zoom object-cover"
-               src='/pics/pc_pic.jpg'
-               alt="landing image"
-               sizes={100}
-               fill
-            />
-            
+         <div className="fixed top-0 left-0 w-full min-h-dvh flex justify-center items-center visible max-[870px]:invisible z-1">
+            <div className="w-full visible max-[870px]:hidden">
+               <Image className="object-cover object-center"
+                  src='/pics/LandingMain.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
+            <div className="w-full invisible max-[870px]:visible">
+               <Image className="object-cover object-top"
+                  src='/pics/Landing_mobi.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
             <div className="flex flex-col justify-center items-center">
-               <div className="z-1 right-3 text-white/70 text-9xl mb-5 font-[family-name:var(--font-dancing-script),cursive]">Prestige</div>
-               <div className="z-1 font-sans tracking-widest text-xs mb-5">WHERE THE FASHION IS BORN ONCE AGAIN</div>
+               <div className="z-1 right-3 text-white/70 text-9xl mb-5 font-[family-name:var(--font-dancing-script),cursive] max-[1000px]:text-[#ff0048]">Prestige</div>
+               <div className="z-1 font-sans tracking-widest text-xs mb-5 text-white">WHERE THE FASHION IS BORN ONCE AGAIN</div>
                
                <button className="relative flex items-center gap-1 bg-white/20 px-9 py-4 border-1 text-base bg-inherit rounded-xl font-semibold text-white cursor-pointer overflow-hidden transition-all duration-600 ease-custom hover:text-black group hover:transition-all duration-700 hover:duration-700"
                >
@@ -50,7 +57,37 @@ export default function Home() {
          </div>
 
          <div className="w-full min-h-dvh bg-green/0"></div>
-         <div className="z-1 w-full min-h-dvh bg-white shadow-[1px_0_10px_0_#0000007a] backdrop-blur-sm flex justify-start items-end min-[870px]:items-center">
+         <div className="z-2 w-full min-h-dvh backdrop-blur-sm flex justify-center items-end min-[870px]:items-center">
+            <div className="w-full h-full flex justify-between items-start visible max-[870px]:hidden">
+               <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-left`}
+                  src='/pics/Section_A.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
+            <div className="w-fit invisible max-[870px]:visible">
+               <Image className={`object-cover object-top`}
+                  src='/pics/SectionA_mobi.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
+            <div className="w-1/2 h-dvh min-[870px]:bg-[linear-gradient(to_left,#ff8c00_60%,rgba(255,140,0,0.8)_70%,rgba(255,140,0,0.6)_80%,rgba(255,140,0,0.4)_90%,rgba(255,140,0,0.2)_95%,rgba(255,140,0,0)_100%)] z-10 pr-10 flex flex-col items-end justify-center
+            
+            max-[870px]:h-fit
+            max-[870px]:w-full
+            max-[870px]:absolute
+            max-[870px]:items-center
+            max-[870px]:p-5
+            max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
+            ">
+               <p className="min-w-dvw font-[family-name:var(--font-marker),san-serif] text-[#ffcc92] text-8xl text-right mb-2 max-[870px]:text-center max-[870px]:text-5xl max-[870px]:text-[#ffae00]">Glamour Girls</p>
+               <p className="w-full font-[family-name:var(--font-quicksand),san-serif] text-white text-xl font-semibold text-end max-[870px]:text-white max-[870px]:text-center">Maximizing Attractiveness and Elegance</p>
+               <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
+            </div>
+         </div>
+
+         <div className="z-2 w-full min-h-dvh bg-white shadow-[1px_0_10px_0_#0000007a] backdrop-blur-sm flex justify-start items-end min-[870px]:items-center">
             <div className="w-fit visible max-[870px]:hidden">
                <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-right`}
                   src='/pics/SectionB.jpg'
@@ -74,13 +111,13 @@ export default function Home() {
             max-[870px]:items-center
             max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
             ">
-               <p className="font-[family-name:var(--font-msmadi),san-serif] text-[#a30000] text-8xl font-light max-[870px]:text-white max-[870px]:text-6xl">Beautiful Models</p>
+               <p className="font-[family-name:var(--font-msmadi),san-serif] text-[rgb(130,0,0)] text-8xl font-light max-[870px]:text-white max-[870px]:text-6xl">Persian Style</p>
                <p className="font-[family-name:var(--font-quicksand),san-serif] text-gray-500 text-3xl font-semibold max-[870px]:text-white max-[870px]:text-xl">Showcasing The Iranian Beauties</p>
                <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
             </div>
          </div>
 
-         <div className="z-1 w-full min-h-dvh backdrop-blur-sm flex justify-center items-end min-[870px]:items-center">
+         <div className="z-2 w-full min-h-dvh backdrop-blur-sm flex justify-center items-end min-[870px]:items-center">
             <div className="w-full h-full flex justify-between items-start visible max-[870px]:hidden">
                <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-left`}
                   src='/pics/SectionC.jpg'
@@ -104,12 +141,12 @@ export default function Home() {
             max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
             ">
                <p className="font-[family-name:var(--font-comforta),san-serif] text-[#a30000] text-7xl text-right font-bold mb-2 max-[870px]:text-white max-[870px]:text-center max-[870px]:text-5xl">TNP Modeling</p>
-               <p className="w-full font-[family-name:var(--font-quicksand),san-serif] text-gray-500 text-xl font-semibold text-end max-[870px]:text-white max-[870px]:text-center">Photographing beautiful Iranian models in Iran&apos;s stunning nature can perfectly showcase your relevant products.</p>
+               <p className="w-full font-[family-name:var(--font-quicksand),san-serif] text-gray-500 text-xl font-semibold text-end max-[870px]:text-white max-[870px]:text-center">Photographing Models in Nature</p>
                <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
             </div>
          </div>
 
-         <div className="z-1 w-full min-h-dvh bg-white backdrop-blur-sm flex justify-start items-end min-[870px]:items-center">
+         <div className="z-2 w-full min-h-dvh bg-white backdrop-blur-sm flex justify-start items-end min-[870px]:items-center">
             <div className="w-fit visible max-[870px]:hidden">
                <Image className="object-contain object-right"
                   src='/pics/SectionE.jpg'
@@ -139,6 +176,24 @@ export default function Home() {
             </div>
          </div>
 
+         <div className="fixed top-0 min-w-dvw min-h-dvh custom_appear">
+            <div className="w-fit visible max-[870px]:hidden">
+               <Image className="object-contain object-right"
+                  src='/pics/Section.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
+            <div className="w-fit invisible max-[870px]:visible">
+               <Image className="object-cover object-bottom custom_zoom2"
+                  src='/pics/footer_mob.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
+         </div>
+
+         <div className="min-w-dvw min-h-dvh z-2"></div>
 
       </div>
    );
