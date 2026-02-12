@@ -53,7 +53,7 @@ function Ham(){
 
 
    return(
-      <div className={`w-full top-0 left-0 p-2 flex flex-col justify-between items-start transition-all ease-in-out ${open ? 'backdrop-blur-xs bg-white/20 h-dvh' : ''}`}
+      <div className={`w-full fixed top-0 left-0 p-2 flex flex-col justify-between items-start transition-all ease-in-out ${open ? 'backdrop-blur-xs bg-white/20 h-dvh' : ''}`}
          onClick={(e) => {
             setOpen(false)
          }}

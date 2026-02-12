@@ -5,26 +5,30 @@ import Image from "next/image";
 
 
 
+
 export default function Home() {
 
    return (
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center bg-white overflow-hidden">
-         <div className="fixed top-0 left-0 w-full min-h-dvh flex justify-center items-center visible max-[870px]:invisible z-1">
+         <div className="fixed top-0 left-0 w-full min-h-dvh flex justify-center items-center z-1">
+
             <div className="w-full visible max-[870px]:hidden">
-               <Image className="object-cover object-center"
+               <Image className="object-cover object-center custom_zoom"
                   src='/pics/LandingMain.jpg'
                   alt='image'
                   fill
                />
             </div>
+            
             <div className="w-full invisible max-[870px]:visible">
-               <Image className="object-cover object-top"
+               <Image className="object-cover object-top custom_zoom"
                   src='/pics/Landing_mobi.jpg'
                   alt='image'
                   fill
                />
             </div>
-            <div className="flex flex-col justify-center items-center">
+            
+            <div className="absolute flex flex-col justify-center items-center">
                <div className="z-1 right-3 text-white/70 text-9xl mb-5 font-[family-name:var(--font-dancing-script),cursive] max-[1000px]:text-[#ff0048]">Prestige</div>
                <div className="z-1 font-sans tracking-widest text-xs mb-5 text-white">WHERE THE FASHION IS BORN ONCE AGAIN</div>
                

@@ -60,8 +60,9 @@ function Navbar(){
    const allOptions = [...leftOptions, ...rightOptions]
 
    return(
-      <div className='flex justify-center items-center'>
-         <div className="rounded-[0_0_20px_20px] fixed top-0 z-2 w-full p-3 flex justify-center gap-10 items-center max-[1070px]:invisible">
+      <div className='fixed top-0 min-w-full h-23 z-3 flex justify-center items-center'>
+
+         <div className="absolute top-0 z-2 w-full h-full p-3 flex justify-center gap-10 items-center max-[1070px]:invisible">
             <div className="flex justify-between items-center custom_bg rounded-2xl p-2 backdrop-blur-sm">
                {
                   leftOptions.map((item, index) => (
@@ -101,7 +102,7 @@ function Navbar(){
             </div>
          </div>
          
-         <div className="custom_bg2 fixed top-0 w-[98%] mt-2 z-2 p-2 flex justify-between rounded-[10px] items-center invisible max-[1070px]:min-[850px]:visible">
+         <div className="absolute custom_bg2 top-0 w-[98%] mt-2 z-2 p-2 flex justify-between rounded-[10px] items-center invisible max-[1070px]:min-[850px]:visible">
 
             <div className="w-fit flex justify-center items-center">
                {
@@ -127,7 +128,7 @@ function Navbar(){
             </Link>
          </div>
 
-         <div className={`fixed top-0 left-0 flex justify-between z-3 min-w-full invisible max-[850px]:visible`}>
+         <div className={` top-0 left-0 flex justify-between z-3 min-w-full invisible max-[850px]:visible`}>
             <Ham />
 
             <Link href='/'>
