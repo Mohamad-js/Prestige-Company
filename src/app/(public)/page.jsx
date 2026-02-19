@@ -32,24 +32,24 @@ export default function Home() {
                <div className="z-1 right-3 text-white/70 text-9xl mb-5 font-[family-name:var(--font-dancing-script),cursive] max-[1000px]:text-[#ff0048]">Prestige</div>
                <div className="z-1 font-sans tracking-widest text-xs mb-5 text-white">WHERE THE FASHION IS BORN ONCE AGAIN</div>
                
-               <button className="relative flex items-center gap-1 bg-white/20 px-9 py-4 border-1 text-base bg-inherit rounded-xl font-semibold text-white cursor-pointer overflow-hidden transition-all duration-600 ease-custom hover:text-black group hover:transition-all duration-700 hover:duration-700"
+               <button className="relative flex items-center gap-1 bg-white/20 px-9 py-4 border text-base rounded-xl font-semibold text-white cursor-pointer overflow-hidden transition-all duration-600 ease-custom hover:text-black group hover:transition-all duration-700 hover:duration-700"
                >
                   <svg
                      viewBox="0 0 24 24"
-                     className="absolute w-6 fill-white z-[9] transition-all duration-700 ease-custom -left-1/4 group-hover:left-4 group-hover:fill-[#212121]"
+                     className="absolute w-6 fill-white z-9 transition-all duration-700 ease-custom -left-1/4 group-hover:left-4 group-hover:fill-[#212121]"
                   >
                      <path
                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                      ></path>
                   </svg>
-                  <span className="relative z-[1] font-light transition-all duration-700 ease-custom -translate-x-3 group-hover:translate-x-3">
+                  <span className="relative z-1 font-light transition-all duration-700 ease-custom -translate-x-3 group-hover:translate-x-3">
                      Learn More
                   </span>
                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full opacity-0 transition-all duration-700 ease-custom group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"
                   ></span>
                   <svg
                      viewBox="0 0 24 24"
-                     className="absolute w-6 fill-white z-[9] transition-all duration-700 ease-custom right-4 group-hover:-right-1/4 group-hover:fill-[#212121]"
+                     className="absolute w-6 fill-white z-9 transition-all duration-700 ease-custom right-4 group-hover:-right-1/4 group-hover:fill-[#212121]"
                   >
                      <path
                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -64,14 +64,14 @@ export default function Home() {
          <div className="z-2 w-full min-h-dvh backdrop-blur-sm flex justify-center items-end min-[870px]:items-center">
             <div className="w-full h-full flex justify-between items-start visible max-[870px]:hidden">
                <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-left`}
-                  src='/pics/Section_A.jpg'
+                  src='/pics/pcGlamour.jpg'
                   alt='image'
                   fill
                />
             </div>
             <div className="w-fit invisible max-[870px]:visible">
                <Image className={`object-cover object-top`}
-                  src='/pics/SectionA_mobi.jpg'
+                  src='/pics/mobGlamour.jpg'
                   alt='image'
                   fill
                />
