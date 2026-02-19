@@ -79,7 +79,7 @@ function Navbar(){
                <div className="relative cursor-pointer w-20 h-20 overflow-hidden bg-white flex items-center justify-center rounded-full">
                   <div className="w-15 h-15 overflow-hidden flex justify-center items-center">
                      <Image className='object-contain'
-                        src='/illustrations/logo.jpg'
+                        src='/illustrations/logo.png'
                         alt='logo'
                         fill
                         size={100}
