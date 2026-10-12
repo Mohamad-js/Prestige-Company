@@ -1,6 +1,22 @@
 import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide, Rubik_Marker_Hatch } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import localFont from 'next/font/local'
+
+
+
+
+const vazirt = localFont({
+  src: '../../public/fonts/vazir/Vazir-Thin.ttf',
+  display: 'swap',
+  variable: '--vazirt',
+})
+
+const vazirb = localFont({
+  src: '../../public/fonts/vazir/Vazir-Bold.ttf',
+  display: 'swap',
+  variable: '--vazirb',
+})
 
 const geistSans = Geist({
    variable: "--font-geist-sans",
@@ -55,13 +71,13 @@ const marker = Rubik_Marker_Hatch({
 });
 
 export const metadata = {
-   title: "Prestige Modeling",
-   description: "The Place Where Fashion Was Born Again",
+   title: "Prestige Institution",
+   description: "The Place Where Langauge Was Born Again",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${vazirt.variable} ${vazirb.variable}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${quicksand.variable} ${msMadi.variable} ${comforta.variable} ${audiowide.variable} ${marker.variable}  antialiased`}
       >

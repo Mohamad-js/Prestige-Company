@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { MeshGradientBg } from "@/components/paper-mesh";
 
 
 
@@ -9,50 +10,35 @@ import Image from "next/image";
 export default function Home() {
 
    return (
-      <div className="min-w-full min-h-dvh flex flex-col items-center justify-center bg-white overflow-hidden">
-         <div className="fixed top-0 left-0 w-full min-h-dvh flex justify-center items-center z-1">
-
-            <div className="w-full visible max-[870px]:hidden">
-               <Image className="object-cover object-center custom_zoom"
-                  src='/pics/LandingMain.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
+      <div className="min-w-full min-h-dvh flex flex-col items-end justify-center bg-gradient-to-r from-violet-200 to-pink-200 overflow-hidden">
+         <div className="fixed top-0 left-0 w-full min-h-dvh flex justify-end items-center z-2">
             
-            <div className="w-full invisible max-[870px]:visible">
-               <Image className="object-cover object-top custom_zoom"
-                  src='/pics/Landing_mobi.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            
-            <div className="absolute flex flex-col justify-center items-center">
-               <div className="z-1 right-3 text-white/70 text-9xl mb-5 font-[family-name:var(--font-dancing-script),cursive] max-[1000px]:text-[#ff0048]">Prestige</div>
-               <div className="z-1 font-sans tracking-widest text-xs mb-5 text-white">WHERE THE FASHION IS BORN ONCE AGAIN</div>
+            <div className="absolute flex flex-col justify-center items-end custom_left p-10">
+               <div className="z-1 right-3 text-white text-7xl mb-5 max-[1000px]:text-[#ff0048] font-(family-name:--vazirb) custom_go">آکادمی پرستیژ</div>
+               <div className="z-1 tracking-widest text-md mb-10 text-white font-(family-name:--vazirt) custom_go">کلاس های خاص برای زبان آموزان خاص</div>
                
-               <button className="relative flex items-center gap-1 bg-white/20 px-9 py-4 border text-base rounded-xl font-semibold text-white cursor-pointer overflow-hidden transition-all duration-600 ease-custom hover:text-black group hover:transition-all duration-700 hover:duration-700"
-               >
+               <button className="relative flex items-center gap-1 bg-white/20 px-9 py-4 border text-base rounded-xl font-semibold text-white cursor-pointer overflow-hidden transition-all ease-custom hover:text-black group hover:transition-all duration-550 hover:duration-550 custom_go">
                   <svg
                      viewBox="0 0 24 24"
-                     className="absolute w-6 fill-white z-9 transition-all duration-700 ease-custom -left-1/4 group-hover:left-4 group-hover:fill-[#212121]"
+                     className="absolute w-6 fill-white z-9 transition-all duration-550 ease-custom left-4 rotate-180 group-hover:-left-1/4 group-hover:fill-[#212121]"
                   >
                      <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 20.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                      ></path>
                   </svg>
-                  <span className="relative z-1 font-light transition-all duration-700 ease-custom -translate-x-3 group-hover:translate-x-3">
-                     Learn More
+
+                  <span className="relative group-hover:bg-gray-1000 font-(family-name:--vazirb) z-1 font-light transition-all  text-white/80 hover:text-whiteduration-550 ease-custom translate-x-3 group-hover:text-black group-hover:-translate-x-3">
+                     تعیین سطح بده
                   </span>
-                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full opacity-0 transition-all duration-700 ease-custom group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-full bg-[#f1f1f1] rounded-full opacity-0 transition-all duration-550 ease-custom group-hover:w-55 group-hover:opacity-100"
                   ></span>
+                  
                   <svg
                      viewBox="0 0 24 24"
-                     className="absolute w-6 fill-white z-9 transition-all duration-700 ease-custom right-4 group-hover:-right-1/4 group-hover:fill-[#212121]"
+                     className="absolute w-6 fill-gray-300 z-9 transition-all duration-550 ease-custom -right-1/4 rotate-180 group-hover:right-4 group-hover:fill-[#212121]"
                   >
                      <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 20.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                      ></path>
                   </svg>
                </button>
@@ -61,143 +47,247 @@ export default function Home() {
          </div>
 
          <div className="w-full min-h-dvh bg-green/0"></div>
-         <div className="z-2 w-full min-h-dvh backdrop-blur-sm flex justify-center items-end min-[870px]:items-center">
-            <div className="w-full h-full flex justify-between items-start visible max-[870px]:hidden">
-               <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-left`}
-                  src='/pics/pcGlamour.jpg'
-                  alt='image'
-                  fill
-               />
+
+         <div className="z-2 w-full min-h-dvh flex justify-end items-end">
+            <div className="w-2/3 min-h-screen flex flex-col justify-start items-center gap-10 ml-5">
+
+               <div className="w-full h-fit flex flex-wrap justify-evenly gap-5">
+                  <div className="w-full text-black tracking-widest text-sm text-center font-(family-name:--vazirb)">آموزشگاهی برای همه ی نیاز های شما</div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-(family-name:--font-comforta) bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">IELTS</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TOEFL</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">CIPLE</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div className="w-full h-fit flex flex-wrap justify-evenly">
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">KIDS</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TEENS</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">ADULT</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div className="w-full h-fit flex flex-wrap justify-evenly">
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">CELTA</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TTC</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TESOL</div>
+                     </div>
+                  </div>
+               </div>
+
             </div>
-            <div className="w-fit invisible max-[870px]:visible">
-               <Image className={`object-cover object-top`}
-                  src='/pics/mobGlamour.jpg'
-                  alt='image'
-                  fill
-               />
+         </div>
+
+
+         <div className="z-2 pl-10 w-2/3 min-h-dvh flex justify-start items-center content-center flex-wrap gap-5 font-(family-name:--vazirb)">
+            <div className="w-full text-gray-800 tracking-widest text-sm text-center font-(family-name:--vazirb)">زبان های متنوع برای همه</div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-start items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex flex-row-reverse justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Portugal.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-end gap-3">
+                     <p className="text-2xl text-white font-bold group-hover:text-gray-500">پرتغالی</p>
+                     <p className="text-sm tracking-widest text-white font-(family-name:--vazirt) group-hover:text-gray-500">اروپایی و برزیلی</p>
+                  </div>
+               </div>
             </div>
-            <div className="w-1/2 h-dvh min-[870px]:bg-[linear-gradient(to_left,#ff8c00_60%,rgba(255,140,0,0.8)_70%,rgba(255,140,0,0.6)_80%,rgba(255,140,0,0.4)_90%,rgba(255,140,0,0.2)_95%,rgba(255,140,0,0)_100%)] z-10 pr-10 flex flex-col items-end justify-center
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-start items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex flex-row-reverse justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/England.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-end gap-3">
+                     <p className="text-2xl text-white font-bold group-hover:text-gray-500">انگلیسی</p>
+                     <p className="text-sm tracking-widest text-white font-(family-name:--vazirt) group-hover:text-gray-500">امریکن و بریتیش</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-start items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex flex-row-reverse justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Germany.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-end gap-3">
+                     <p className="text-2xl text-white font-bold group-hover:text-gray-500">آلمانی</p>
+                     <p className="text-sm tracking-widest text-white font-(family-name:--vazirt) group-hover:text-gray-500">هوکدویچ و پلات‌دویچ</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-start items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex flex-row-reverse justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/French.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-end gap-3">
+                     <p className="text-2xl text-white font-bold group-hover:text-gray-500">فرانسوی</p>
+                     <p className="text-sm tracking-widest text-white font-(family-name:--vazirt) group-hover:text-gray-500">متروپولیتن و کبک</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-start items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex flex-row-reverse justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Denmark.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-end gap-3">
+                     <p className="text-2xl text-white font-bold group-hover:text-gray-500">دانمارکی</p>
+                     <p className="text-sm tracking-widest text-white font-(family-name:--vazirt) group-hover:text-gray-500">استاندارد و جوتلاندیک</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-start items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex flex-row-reverse justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Holand.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-end gap-4">
+                     <p className="text-2xl text-white font-bold group-hover:text-gray-500">هلندی</p>
+                     <p className="text-sm tracking-widest text-white font-(family-name:--vazirt) group-hover:text-gray-500">استاندارد, هلندیک, فلاندری</p>
+                  </div>
+               </div>
+            </div>
             
-            max-[870px]:h-fit
-            max-[870px]:w-full
-            max-[870px]:absolute
-            max-[870px]:items-center
-            max-[870px]:p-5
-            max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
-            ">
-               <p className="min-w-dvw font-[family-name:var(--font-marker),san-serif] text-[#ffcc92] text-8xl text-right mb-2 max-[870px]:text-center max-[870px]:text-5xl max-[870px]:text-[#ffae00]">Glamour Girls</p>
-               <p className="w-full font-[family-name:var(--font-quicksand),san-serif] text-white text-xl font-semibold text-end max-[870px]:text-white max-[870px]:text-center">Maximizing Attractiveness and Elegance</p>
-               <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
-            </div>
          </div>
 
-         <div className="z-2 w-full min-h-dvh bg-white shadow-[1px_0_10px_0_#0000007a] backdrop-blur-sm flex justify-start items-end min-[870px]:items-center">
-            <div className="w-fit visible max-[870px]:hidden">
-               <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-right`}
-                  src='/pics/SectionB.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-fit invisible max-[870px]:visible">
-               <Image className={`object-cover object-top`}
-                  src='/pics/SectionB_mob.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-1/2 h-dvh min-[870px]:bg-[linear-gradient(to_right,rgba(255,255,255,1)_60%,rgba(255,255,255,0.8)_70%,rgba(255,255,255,0.6)_80%,rgba(255,255,255,0.4)_90%,rgba(255,255,255,0.2)_95%,rgba(255,255,255,0)_100%)] z-10 pl-10 flex flex-col items-start justify-center 
-            
-            max-[870px]:w-full
-            max-[870px]:h-fit
-            max-[870px]:p-10
-            max-[870px]:text-center
-            max-[870px]:items-center
-            max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
-            ">
-               <p className="font-[family-name:var(--font-msmadi),san-serif] text-[rgb(130,0,0)] text-8xl font-light max-[870px]:text-white max-[870px]:text-6xl">Persian Style</p>
-               <p className="font-[family-name:var(--font-quicksand),san-serif] text-gray-500 text-3xl font-semibold max-[870px]:text-white max-[870px]:text-xl">Showcasing The Iranian Beauties</p>
-               <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
-            </div>
-         </div>
 
-         <div className="z-2 w-full min-h-dvh backdrop-blur-sm flex justify-center items-end min-[870px]:items-center">
-            <div className="w-full h-full flex justify-between items-start visible max-[870px]:hidden">
-               <Image className={`max-[1000px]:object-cover max-[1000px]:object-top-right object-contain object-left`}
-                  src='/pics/SectionC.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-fit invisible max-[870px]:visible">
-               <Image className={`object-cover object-top`}
-                  src='/pics/SectionC_mob.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-full h-dvh min-[870px]:bg-[linear-gradient(to_left,rgba(255,255,255,1)_60%,rgba(255,255,255,0.8)_70%,rgba(255,255,255,0.6)_80%,rgba(255,255,255,0.3)_90%,rgba(255,255,255,0.1)_95%,rgba(255,255,255,0)_100%)] z-10 pr-10 flex flex-col items-end justify-center
-            
-            max-[870px]:h-fit
-            max-[870px]:absolute
-            max-[870px]:items-center
-            max-[870px]:p-5
-            max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
-            ">
-               <p className="font-[family-name:var(--font-comforta),san-serif] text-[#a30000] text-7xl text-right font-bold mb-2 max-[870px]:text-white max-[870px]:text-center max-[870px]:text-5xl">TNP Modeling</p>
-               <p className="w-full font-[family-name:var(--font-quicksand),san-serif] text-gray-500 text-xl font-semibold text-end max-[870px]:text-white max-[870px]:text-center">Photographing Models in Nature</p>
-               <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
-            </div>
-         </div>
+         <div className="w-full min-h-dvh flex flex-col justify-end items-end z-2 p-5">
+            <div className="w-full min-h-[60dvh] border bg-[#fff3] rounded-xl backdrop-blur-lg flex flex-row-reverse items-center justify-start pr-20 gap-20 text-white font-(family-name:--vazirt)">
 
-         <div className="z-2 w-full min-h-dvh bg-white backdrop-blur-sm flex justify-start items-end min-[870px]:items-center">
-            <div className="w-fit visible max-[870px]:hidden">
-               <Image className="object-contain object-right"
-                  src='/pics/SectionE.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-fit invisible max-[870px]:visible">
-               <Image className="object-cover object-top"
-                  src='/pics/SectionE_mob.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-1/2 h-dvh min-[870px]:bg-[linear-gradient(to_right,rgba(255,255,255,1)_60%,rgba(255,255,255,0.8)_70%,rgba(255,255,255,0.6)_80%,rgba(255,255,255,0.4)_90%,rgba(255,255,255,0.2)_95%,rgba(255,255,255,0)_100%)] z-10 pl-10 flex flex-col items-start justify-center
-            
-            max-[870px]:w-full
-            max-[870px]:h-fit
-            max-[870px]:absolute
-            max-[870px]:items-center
-            max-[870px]:p-5
-            max-[870px]:bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.8)_10%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.3)_70%,rgba(0,0,0,0.1)_90%,rgba(0,0,0,0)_100%)]
-            ">
-               <p className="font-[family-name:var(--font-audiowide),san-serif] text-[#a30000] text-7xl font-light max-[870px]:text-white max-[870px]:text-5xl">EXOTIC FEEL</p>
-               <p className="font-[family-name:var(--font-quicksand),san-serif] text-gray-500 text-3xl font-semibold max-[870px]:text-white max-[870px]:text-xl">To destinguish you from others!</p>
-               <button className="py-2 px-6 rounded-xl border text-gray-500 font-medium bg-gray-100 hover:border-black hover:text-black cursor-pointer active:scale-95 transition-all mt-5">Visit</button>
-            </div>
-         </div>
+               <div className="w-fit h-full flex flex-col justify-evenly items-end gap-2">
+                  <div className="text-white font-(family-name:--vazirb) mb-3">آزمون ها</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">IELTS</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">TOEFL</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">SAT</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">PTE</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">CAE</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">TOLIMO</div>
+               </div>
 
-         <div className="fixed top-0 min-w-dvw min-h-dvh custom_appear">
-            <div className="w-fit visible max-[870px]:hidden">
-               <Image className="object-contain object-right"
-                  src='/pics/Section.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-            <div className="w-fit invisible max-[870px]:visible">
-               <Image className="object-cover object-bottom custom_zoom2"
-                  src='/pics/footer_mob.jpg'
-                  alt='image'
-                  fill
-               />
-            </div>
-         </div>
+               <div className="w-fit h-full flex flex-col justify-evenly items-end gap-2">
+                  <div className="font-(family-name:--vazirb) mb-3">زبان ها</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">انگلیسی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">فرانسوی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">پرتغالی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">آلمانی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">هلندی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">دانمارکی</div>
+               </div>
 
-         <div className="min-w-dvw min-h-dvh z-2"></div>
+               <div className="w-fit h-full flex flex-col justify-evenly items-end gap-2">
+                  <div className="font-(family-name:--vazirb) mb-3">دوره ها</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">گروهی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">خصوصی</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">کودکان</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">نوجوانان</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">بزرگسال</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">مهاجرت</div>
+               </div>
+
+               <div className="w-fit h-full flex flex-col justify-evenly items-end gap-2">
+                  <div className="font-(family-name:--vazirb) mb-3">دیگر</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">استخدام در پرستیژ</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">تربیت مدرس</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">کتاب ها</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">تعیین سطح</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">اطلاعات تماس</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">درباره ی ما</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer"></div>
+               </div>
+
+               <div className="absolute left-0 w-1/4 h-fit flex flex-col justify-center items-center gap-3">
+                  <div className="relative size-50 overflow-hidden flex justify-center items-center">
+                     <Image className='object-contain drop-shadow-sm'
+                        src='/illustrations/logo.png'
+                        alt='logo'
+                        fill
+                        size={100}
+                     />
+
+                  </div>
+                  <div className="z-1 text-black text-3xl font-(family-name:--vazirt)">آکادمی پرستیژ</div>
+               </div>
+
+               <div className="w-full absolute left-0 bottom-0 text-center text-xs mb-2 text-black font-(family-name:--vazirt)">تمامی حقوق برای آکادمی پرستیژ محفوظ است</div>
+            </div>
+
+         </div>
 
       </div>
    );

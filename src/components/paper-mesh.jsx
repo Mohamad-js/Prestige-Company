@@ -4,12 +4,12 @@ import { MeshGradient } from "@paper-design/shaders-react";
 
 export function MeshGradientBg({
   className = "",
-  colors = ["#e0eaff", "#ff4de7", "#ff0088"],
+  colors = ["#ff2391", "#ff8ff0", "#ff0088"],
   distortion = 1,
   swirl = 1,
   grainMixer = 0,
   grainOverlay = 0,
-  speed = 0.5,
+  speed = 0.3,
   scale = 0.8,
   ...rest
 }) {

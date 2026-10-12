@@ -1,0 +1,306 @@
+'use client'
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+
+
+
+
+export default function Home() {
+
+   return (
+      <div className="min-w-full min-h-dvh flex flex-col items-start justify-center bg-white overflow-hidden">
+         <div className="fixed top-0 left-0 w-full min-h-dvh flex justify-start items-center z-2">
+
+            <div className="fixed right-20 bottom-0 w-1/4 h-120">
+               <div className="fixed top-0 right-0 w-1/5 rounded-[1000%_0_0_0] min-h-screen bg-[#ffb8f0]"></div>
+               <Image className="object-contain object-bottom-right"
+                  src='/pics/footerGirl.png'
+                  alt='image'
+                  fill
+               />
+            </div>
+            
+            <div className="w-full invisible max-[855px]:visible">
+               <Image className="object-cover object-top custom_zoom"
+                  src='/pics/Landing_mobi.jpg'
+                  alt='image'
+                  fill
+               />
+            </div>
+            
+            <div className="absolute flex flex-col justify-center items-start custom_left p-10">
+               <div className="z-1 right-3 text-white text-9xl mb-5 font-[family-name:var(--font-dancing-script),cursive] max-[1000px]:text-[#ff0048] custom_go">Prestige Academy</div>
+               <div className="z-1 font-sans tracking-widest text-xs mb-10 text-white custom_go">SPECIAL CLASSES FOR SPECIAL STUDENTS</div>
+               
+               <button className="relative flex items-center gap-1 bg-white/20 px-9 py-4 border text-base rounded-xl font-semibold text-white cursor-pointer overflow-hidden transition-all ease-custom hover:text-black group hover:transition-all duration-550 hover:duration-550 custom_go">
+                  <svg
+                     viewBox="0 0 24 24"
+                     className="absolute w-6 fill-white z-9 transition-all duration-550 ease-custom -left-1/4 group-hover:left-4 group-hover:fill-[#212121]"
+                  >
+                     <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 20.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                     ></path>
+                  </svg>
+                  <span className="relative group-hover:bg-gray-1000 z-1 font-light transition-all  text-white/80 hover:text-whiteduration-550 ease-custom -translate-x-3 group-hover:text-black group-hover:translate-x-3">
+                     Test Your Level
+                  </span>
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-full bg-[#f1f1f1] rounded-full opacity-0 transition-all duration-550 ease-custom group-hover:w-55 group-hover:opacity-100"
+                  ></span>
+                  <svg
+                     viewBox="0 0 24 24"
+                     className="absolute w-6 fill-gray-300 z-9 transition-all duration-550 ease-custom right-4 group-hover:-right-1/4 group-hover:fill-[#212121]"
+                  >
+                     <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 20.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                     ></path>
+                  </svg>
+               </button>
+
+            </div>
+         </div>
+
+         <div className="w-full min-h-dvh bg-green/0"></div>
+
+         <div className="z-2 w-full min-h-dvh flex justify-start items-end">
+            <div className="w-2/3 min-h-screen flex flex-col justify-start items-center gap-10 ml-5">
+
+               <div className="w-full h-fit flex flex-wrap justify-evenly gap-5">
+                  <div className="w-full text-black tracking-widest text-sm text-center font-(family-name:--font-comforta)">AN ACADEMY FOR ALL YOUR NEEDS</div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-(family-name:--font-comforta) bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">IELTS</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TOEFL</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">CIPLE</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div className="w-full h-fit flex flex-wrap justify-evenly">
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">KIDS</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TEENS</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">ADULT</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div className="w-full h-fit flex flex-wrap justify-evenly">
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">CELTA</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TTC</div>
+                     </div>
+                  </div>
+                  <div className="group overflow-hidden rounded-xl cursor-pointer w-55 h-20 flex flex-col justify-between items-center active:scale-98">
+                     <div className="relative w-full h-full flex justify-center items-end">
+                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
+                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TESOL</div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+
+
+         <div className="z-2 pl-10 w-2/3 min-h-dvh flex justify-center items-center content-center flex-wrap gap-5">
+            <div className="w-full text-gray-800 tracking-widest text-sm text-center font-(family-name:--font-comforta)">VARIOUS LANGUAGE COURSES FOR EVERYBODY</div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-center items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Portugal.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-start">
+                     <p className="text-2xl text-white font-bold font-[family-name:var(--font-comforta),cursive] group-hover:text-gray-500">PORTUGUESE</p>
+                     <p className="text-xs tracking-widest text-white font-(family-name:--font-comforta) group-hover:text-gray-500">EUROPEAN & BRAZILIAN</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-center items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/England.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-start">
+                     <p className="text-2xl text-white font-bold font-[family-name:var(--font-comforta),cursive] group-hover:text-gray-500">ENGLISH</p>
+                     <p className="text-xs tracking-widest text-white font-(family-name:--font-comforta) group-hover:text-gray-500">AMERICAN & BRITISH</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-center items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Germany.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-start">
+                     <p className="text-2xl text-white font-bold font-[family-name:var(--font-comforta),cursive] group-hover:text-gray-500">GERMANY</p>
+                     <p className="w-full text-xs tracking-widest text-white font-(family-name:--font-comforta) group-hover:text-gray-500">HOCHDEUTSCH & PLAATDEUTSCH</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-center items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/French.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-start">
+                     <p className="text-2xl text-white font-bold font-[family-name:var(--font-comforta),cursive] group-hover:text-gray-500">FRENCH</p>
+                     <p className="text-xs tracking-widest text-white font-(family-name:--font-comforta) group-hover:text-gray-500">METROPOLITAN & QUEBEC</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-center items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Denmark.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-start">
+                     <p className="text-2xl text-white font-bold font-[family-name:var(--font-comforta),cursive] group-hover:text-gray-500">Danish</p>
+                     <p className="text-xs tracking-widest text-white font-(family-name:--font-comforta) group-hover:text-gray-500">STANDARD & JUTLANDIC</p>
+                  </div>
+               </div>
+            </div>
+
+            <div className="w-100 h-fit p-5 border backdrop-blur-lg rounded-3xl bg-white/30 flex justify-center items-start overflow-hidden hover:bg-white transition duration-300 cursor-pointer hover:scale-105 group active:scale-103">
+               <div className="w-full h-20 flex justify-start items-center gap-3">
+                  <div className="w-20 h-20 relative overflow-hidden rounded-[50%]">
+                     <Image className="object-cover"
+                        src='/pics/Holand.jpg'
+                        alt='image'
+                        fill
+                     />
+                  </div>
+                  <div className="w-0.5 h-full bg-white group-hover:bg-gray-300"></div>
+                  <div className="w-fit h-full flex flex-col justify-center items-start">
+                     <p className="text-2xl text-white font-bold font-[family-name:var(--font-comforta),cursive] group-hover:text-gray-500">Dutch</p>
+                     <p className="text-xs tracking-widest text-white font-(family-name:--font-comforta) group-hover:text-gray-500">STANDARD, HOLLANDIC, FLEMISH</p>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+
+
+         <div className="w-full min-h-dvh flex items-end z-2 p-5">
+            <div className="w-full min-h-[60dvh] border bg-[#fff3] rounded-4xl backdrop-blur-lg flex items-center justify-start pl-20 gap-20 text-white">
+
+               <div className="w-fit h-full flex flex-col justify-evenly items-start gap-2">
+                  <div className="font-semibold mb-3">EXAMS</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">IELTS</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">TOEFL</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">SAT</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">PTE</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">CAE</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">TOLIMO</div>
+               </div>
+
+               <div className="w-fit h-full flex flex-col justify-evenly items-start gap-2">
+                  <div className="font-semibold mb-3">LANGUAGES</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">English</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">French</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Portuguese</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">German</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Dutch</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Danish</div>
+               </div>
+
+               <div className="w-fit h-full flex flex-col justify-evenly items-start gap-2">
+                  <div className="font-semibold mb-3">COURSES</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Public</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Private</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Kids</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Teens</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Adults</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Immigration</div>
+               </div>
+
+               <div className="w-fit h-full flex flex-col justify-evenly items-start gap-2">
+                  <div className="font-semibold mb-3">OTHER</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Join Prestige</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Teachers</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Books</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Level Assessment</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">Contact Info</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer">About</div>
+                  <div className="font-light tracking-widest text-white/80 hover:text-white cursor-pointer"></div>
+               </div>
+
+               <div className="absolute right-0 w-1/4 h-fit flex flex-col justify-center items-center gap-3">
+                  <div className="relative size-50 overflow-hidden flex justify-center items-center">
+                     <Image className='object-contain drop-shadow-sm'
+                        src='/illustrations/logo.png'
+                        alt='logo'
+                        fill
+                        size={100}
+                     />
+
+                  </div>
+                  <div className="z-1 text-black text-3xl font-(family-name:--font-dancing-script) ">Prestige Academy</div>
+               </div>
+
+            </div>
+         </div>
+
+      </div>
+   );
+}

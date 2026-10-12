@@ -47,6 +47,25 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
+@layer utilities {
+   .bg-gradient-white-overlay {
+      background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.0) 0%,
+            rgba(255, 255, 255, 0.1) 10%,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.3) 30%,
+            rgba(255, 255, 255, 0.4) 40%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.6) 60%,
+            rgba(255, 255, 255, 0.7) 70%,
+            rgba(255, 255, 255, 0.8) 80%,
+            rgba(255, 255, 255, 0.9) 90%,
+            rgba(255, 255, 255, 1.0) 100%);
+   }
+}
+
+
+
 * {
      user-select: none;
 }
@@ -83,7 +102,30 @@ html.lenis body {
    to {
       scale: 2;
    }
+
+
+
+
 }
+
+/* ///////////////////////////////////////////////// */
+
+.custom_go {
+   opacity: 1;
+   animation: go linear forwards;
+   animation-timeline: scroll();
+   animation-range: 0 5%;
+}
+
+@keyframes go {
+   to {
+      opacity: 0;
+   }
+}
+
+
+
+
 
 .custom_zoom2 {
    scale: 2;
@@ -99,15 +141,16 @@ html.lenis body {
 
 .custom_bg {
    background-color: rgba(255, 255, 255, 0);
+   color: white;
    animation: bg linear forwards;
    animation-timeline: scroll();
-   animation-range: 300px 400px;
+   animation-range: 300px 320px;
 }
 
 @keyframes bg {
    to {
-      background-color: rgba(255, 255, 255, 0.418);
-      border: 1px solid gray;
+      background-color: rgba(255, 255, 255, 1);
+      color: black;
    }
 }
 
@@ -126,6 +169,10 @@ html.lenis body {
    }
 }
 
+
+
+
+
 .custom_appear {
    z-index: 0;
    animation: appear linear forwards;
@@ -135,6 +182,40 @@ html.lenis body {
 @keyframes appear {
    to {
       z-index: 1;
+   }
+}
+
+
+
+
+.custom_fade {
+   background: rgba(255, 255, 255, 0);
+   animation: fade linear forwards;
+   animation-timeline: scroll();
+   animation-range: 300px 400px;
+
+}
+
+@keyframes fade {
+   to {
+      background: rgb(255, 255, 255);
+   }
+}
+
+
+
+
+.custom_zoom3 {
+   background: rgba(255, 255, 255, 0);
+   animation: fade linear forwards;
+   animation-timeline: scroll();
+   animation-range: 300px 400px;
+
+}
+
+@keyframes fade {
+   to {
+      background: rgb(255, 255, 255);
    }
 }
 
