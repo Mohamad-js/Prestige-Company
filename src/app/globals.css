@@ -111,10 +111,10 @@ html.lenis body {
 /* ///////////////////////////////////////////////// */
 
 .custom_go {
-   opacity: 1;
-   animation: go linear forwards;
-   animation-timeline: scroll();
-   animation-range: 0 5%;
+    opacity: 1;
+    animation: go linear forwards;
+    animation-timeline: scroll();
+    animation-range: 5% 8%;
 }
 
 @keyframes go {
@@ -125,6 +125,43 @@ html.lenis body {
 
 
 
+
+.logo_nest {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.logo_anim {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}
+
+@supports (animation-timeline: scroll(root block)) {
+    @media (prefers-reduced-motion: no-preference) {
+        .logo_anim {
+            animation: birdDraw linear both;
+            animation-timeline: scroll(root block);
+            animation-range: 0% 100%;
+        }
+    }
+}
+
+@keyframes birdDraw {
+    0% {
+        stroke-dashoffset: 1;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
 
 
 .custom_zoom2 {
@@ -139,51 +176,58 @@ html.lenis body {
    }
 }
 
-.custom_bg {
+
+
+
+
+.custom_bgs {
    background-color: rgba(255, 255, 255, 0);
    color: white;
    animation: bg linear forwards;
    animation-timeline: scroll();
-   animation-range: 300px 320px;
+   animation-range: 100px 150px;
 }
 
 @keyframes bg {
-   to {
-      background-color: rgba(255, 255, 255, 1);
-      color: black;
-   }
+    to {
+        background-color: rgba(255, 255, 255, 1);
+        color: black;
+        box-shadow: 0 0 1px 0 black;
+    }
 }
 
-.custom_bg2 {
-   background-color: rgba(255, 255, 255, 0);
-   backdrop-filter: blur(0);
-   animation: hide linear forwards;
+.nav-active-indicator {
+   background-color: rgb(255 255 255 / 15%);
+   animation: active-nav-indicator linear forwards;
    animation-timeline: scroll();
-   animation-range: 300px 400px;
+   animation-range: 100px 150px;
 }
 
-@keyframes hide {
+@keyframes active-nav-indicator {
    to {
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgb(0 0 0 / 5%);
    }
 }
-
 
 
 
 
 .custom_appear {
-   z-index: 0;
-   animation: appear linear forwards;
-   animation-timeline: scroll();
+   opacity: 0;
+   backdrop-filter: blur(10px);
+   animation: show linear forwards;
+   animation-timeline: view();
 }
 
-@keyframes appear {
+@keyframes show {
    to {
-      z-index: 1;
+      backdrop-filter: blur(0);
+      opacity: 1;
    }
 }
+
+
+
 
 
 

@@ -71,8 +71,8 @@ const marker = Rubik_Marker_Hatch({
 });
 
 export const metadata = {
-   title: "Prestige Institution",
-   description: "The Place Where Langauge Was Born Again",
+   title: "Huming Institution",
+   description: "The Place Where Language Was Born Again",
 };
 
 export default function RootLayout({ children }) {
