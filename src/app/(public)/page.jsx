@@ -1,7 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import { MeshGradientBg } from "@/components/paper-mesh";
 
 
 
@@ -11,58 +9,85 @@ export default function Home() {
 
    return (
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center overflow-hidden">
-         <div className="w-full min-h-dvh flex justify-center items-center z-2">
-            <div className='absolute w-full min-h-4/5 top-0 left-0 bg-linear-to-r from-fuchsia-500 to-pink-500'></div>
-            
-            <div className="absolute w-full flex flex-col justify-center items-center gap-4">
-               <div className='relative w-full h-40 flex flex-col'>
-                  <Image
-                      className='object-contain'
-                      src='/nameLogo.png'
-                      alt='TOEFL logo'
-                      fill
-                  />
-               </div>
-               <div className="relative bottom-0 mb-10 tracking-widest z-1 text-xl font-light text-white font-(family-name:--vazirt)" dir='rtl'>آخرین کلاس زبانی که میری :)</div>
+         <div className="w-full min-h-dvh flex flex-col justify-center items-center z-2">
 
-               <div className='flex gap-5'>
-                  <button className="relative font-(family-name:--vazirt) z-1 bg-white text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">
-                     مشاوره تخصصی
-                  </button>
-
-                  <button className="relative font-(family-name:--vazirt) z-1 text-white border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">
-                     تعیین سطح
-                  </button>
+            <div className="relative w-full px-10 min-h-200 flex justify-between items-center">
+               <div className='w-100 flex flex-col justify-start'>
+                  <div className='relative w-full h-40 flex flex-col'>
+                     <Image
+                         className='object-contain'
+                         src='/LogoText.webp'
+                         alt='Our Logo'
+                         fill
+                     />
+                  </div>
+                  
+                  <div className="relative bottom-0 mb-10 tracking-widest z-1 text-xl font-light text-black font-(family-name:--motevasel)" dir='rtl'>غزل</div>
+   
+                  <div className='flex gap-5'>
+                     <button className="relative font-(family-name:--vazirt) z-1 bg-[#A17BE9] text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">
+                        مشاوره تخصصی
+                     </button>
+   
+                     <button className="relative font-(family-name:--vazirt) z-1 text-black bg-[#E6D9FC] border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">
+                        تعیین سطح
+                     </button>
+                  </div>
                </div>
             </div>
 
-         </div>
+            <div className="z-2 w-full min-h-dvh flex justify-end items-end p-10">
+               <div className="w-full min-h-screen flex flex-col justify-between items-center">
 
-         <div className="z-2 w-full min-h-dvh flex justify-end items-end p-10">
-            <div className="w-full min-h-screen flex flex-col justify-between items-center">
+                  <div className="w-full h-fit flex flex-wrap justify-evenly gap-5 font-(family-name:--vazirt)">
+                     <div className="w-full text-black py-3 rounded-3xl bg-white tracking-widest text-2xl text-center font-(family-name:--vazirt)">دوره های آمادگی برای آزمون های بین المللی</div>
 
-               <div className="w-full h-fit flex flex-wrap justify-evenly gap-5 font-(family-name:--vazirt)">
-                  <div className="w-full text-black py-3 rounded-3xl bg-white tracking-widest text-2xl text-center font-(family-name:--vazirt)">دوره های آمادگی برای آزمون های بین المللی</div>
-                  
-                  <div className='w-full flex flex-col gap-10'>
+                     <div className='w-full flex flex-col gap-10'>
 
-                     <div className='w-full flex justify-between items-center gap-10'>
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-red-500 flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/IELTS-.webp'
-                                    alt='IELTS logo'
-                                    fill
-                                 />
+                        <div className='w-full flex justify-between items-center gap-10'>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-red-500 flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/IELTS-.webp'
+                                       alt='IELTS logo'
+                                       fill
+                                    />
+                                 </div>
                               </div>
+
+                                 <div className='text-black text-xl font-semibold'>دوره ی آیلتس</div>
+
+                                 <div className='w-full flex flex-col items-start text-sm'>
+                                    <div className='text-gray-700'>- گروهی و خصوصی</div>
+                                    <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                    <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                    <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                    <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                                 </div>
+
+                                 <div className='w-full flex justify-end items-center'>
+                                    <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
+                                 </div>
                            </div>
 
-                              <div className='text-black text-xl font-semibold'>دوره ی آیلتس</div>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-blue-500 flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/TOEFL.webp'
+                                       alt='TOEFL logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
+
+                              <div className='text-black text-xl font-semibold'>دوره ی تافل</div>
 
                               <div className='w-full flex flex-col items-start text-sm'>
-                                 <div className='text-gray-700'>- گروهی و خصوصی</div>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
                                  <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
                                  <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
                                  <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
@@ -72,207 +97,182 @@ export default function Home() {
                               <div className='w-full flex justify-end items-center'>
                                  <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
                               </div>
-                        </div>
+                           </div>
 
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-blue-500 flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/TOEFL.webp'
-                                    alt='TOEFL logo'
-                                    fill
-                                 />
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-black/10 flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/PTE.webp'
+                                       alt='TOEFL logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
+
+                              <div className='text-black text-xl font-semibold'>دوره ی پیرسون PTE</div>
+
+                              <div className='w-full flex flex-col items-start text-sm'>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
+                                 <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                 <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                 <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                 <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              </div>
+
+                              <div className='w-full flex justify-end items-center'>
+                                 <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
                               </div>
                            </div>
 
-                           <div className='text-black text-xl font-semibold'>دوره ی تافل</div>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-blue-500 flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/TOEIC.webp'
+                                       alt='TOEFL logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
 
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
-                           </div>
+                              <div className='text-black text-xl font-semibold'>دوره ی توئیک</div>
 
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
+                              <div className='w-full flex flex-col items-start text-sm'>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
+                                 <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                 <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                 <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                 <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              </div>
+
+                              <div className='w-full flex justify-end items-center'>
+                                 <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
+                              </div>
                            </div>
                         </div>
 
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-black/10 flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/PTE.webp'
-                                    alt='TOEFL logo'
-                                    fill
-                                 />
+                        <div className='w-full flex justify-between items-center gap-10'>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-blue-500 flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/sat-exam.webp'
+                                       alt='TOEFL logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
+
+                              <div className='text-black text-xl font-semibold'>دوره ی SAT</div>
+
+                              <div className='w-full flex flex-col items-start text-sm'>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
+                                 <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                 <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                 <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                 <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              </div>
+
+                              <div className='w-full flex justify-end items-center'>
+                                 <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
                               </div>
                            </div>
 
-                           <div className='text-black text-xl font-semibold'>دوره ی پیرسون PTE</div>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-[#69C6CE] flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/IGCSE.webp'
+                                       alt='IGSCE logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
 
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
-                           </div>
+                              <div className='text-black text-xl font-semibold'>دوره ی IGCSE</div>
 
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
-                           </div>
-                        </div>
+                              <div className='w-full flex flex-col items-start text-sm'>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
+                                 <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                 <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                 <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                 <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              </div>
 
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-blue-500 flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/TOEIC.webp'
-                                    alt='TOEFL logo'
-                                    fill
-                                 />
+                              <div className='w-full flex justify-end items-center'>
+                                 <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
                               </div>
                            </div>
 
-                           <div className='text-black text-xl font-semibold'>دوره ی توئیک</div>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 flex bg-[#8EE000] items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/Duolingo.webp'
+                                       alt='TOEFL logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
 
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              <div className='text-black text-xl font-semibold'>دوره ی دولینگو</div>
+
+                              <div className='w-full flex flex-col items-start text-sm'>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
+                                 <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                 <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                 <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                 <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              </div>
+
+                              <div className='w-full flex justify-end items-center'>
+                                 <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
+                              </div>
                            </div>
 
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
+                           <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
+                              <div className='w-full p-5 bg-black/20 flex items-center justify-center rounded-xl'>
+                                 <div className='relative w-full h-50'>
+                                    <Image
+                                       className='object-contain'
+                                       src='/pics/exams/ACT.webp'
+                                       alt='IGSCE logo'
+                                       fill
+                                    />
+                                 </div>
+                              </div>
+
+                              <div className='text-black text-xl font-semibold'>دوره ی ACT</div>
+
+                              <div className='w-full flex flex-col items-start text-sm'>
+                                 <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
+                                 <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
+                                 <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
+                                 <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
+                                 <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
+                              </div>
+
+                              <div className='w-full flex justify-end items-center'>
+                                 <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
+                              </div>
                            </div>
                         </div>
+
                      </div>
 
-                     <div className='w-full flex justify-between items-center gap-10'>
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-blue-500 flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/sat-exam.webp'
-                                    alt='TOEFL logo'
-                                    fill
-                                 />
-                              </div>
-                           </div>
-
-                           <div className='text-black text-xl font-semibold'>دوره ی SAT</div>
-
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
-                           </div>
-
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
-                           </div>
-                        </div>
-
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-[#69C6CE] flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/IGCSE.webp'
-                                    alt='IGSCE logo'
-                                    fill
-                                 />
-                              </div>
-                           </div>
-
-                           <div className='text-black text-xl font-semibold'>دوره ی IGCSE</div>
-
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
-                           </div>
-
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
-                           </div>
-                        </div>
-
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 flex bg-[#8EE000] items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/Duolingo.webp'
-                                    alt='TOEFL logo'
-                                    fill
-                                 />
-                              </div>
-                           </div>
-
-                           <div className='text-black text-xl font-semibold'>دوره ی دولینگو</div>
-
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
-                           </div>
-
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
-                           </div>
-                        </div>
-
-                        <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
-                           <div className='w-full p-5 bg-black/20 flex items-center justify-center rounded-xl'>
-                              <div className='relative w-full h-50'>
-                                 <Image
-                                    className='object-contain'
-                                    src='/pics/exams/ACT.webp'
-                                    alt='IGSCE logo'
-                                    fill
-                                 />
-                              </div>
-                           </div>
-
-                           <div className='text-black text-xl font-semibold'>دوره ی ACT</div>
-
-                           <div className='w-full flex flex-col items-start text-sm'>
-                              <div className='text-gray-700'>- خصوصی و نیمه خصوصی</div>
-                              <div className='text-gray-700'>- فوکس: ۲۴ و ۱۸ ماهه</div>
-                              <div className='text-gray-700'>- فشرده: ۱۲ و ۶ ماهه</div>
-                              <div className='text-gray-700'>- میکرو: تقویت تک مهارت</div>
-                              <div className='text-gray-700'>- تستینگ: شبیه سازی آزمون</div>
-                           </div>
-
-                           <div className='w-full flex justify-end items-center'>
-                              <button className='w-full p-3 cursor-pointer rounded-xl border transition-all border-black/30 text-xs hover:bg-black/5 active:scale-95'>اطلاعات بیشتر</button>
-                           </div>
-                        </div>
-                     </div>
 
                   </div>
 
-
                </div>
-
             </div>
          </div>
+
 
 
          <div className="z-2 w-full min-h-dvh flex justify-end items-end">

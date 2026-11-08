@@ -72,10 +72,10 @@ const navItems = [
              {url: '/ttc/', fa: 'متد CLIL', en: ''},
              {url: '/ttc/', fa: 'متد TBLT', en: ''},
              {url: '/ttc/', fa: 'متد CLT', en: ''},
-             {url: '/ttc/', fa: 'آزمون سازی', en: ''},
              {url: '/ttc/', fa: 'ارزیابی عملکرد', en: ''},
              {url: '/ttc/', fa: 'مدیریت کلاس', en: ''},
-             {url: '/ttc/', fa: 'برنامه ریزی', en: ''},
+             {url: '/ttc/', fa: 'دوره ی CELTA', en: ''},
+             {url: '/ttc/', fa: 'دوره ی DELTA', en: ''},
          ],
 
          jobs: [
@@ -102,65 +102,163 @@ const navItems = [
              {url: '/conversations/', fa: 'گروهی پیشرفته', en: ''},
          ],
 
+         enExams: [
+             {url: '/enExams/', fa: 'IELTS', en: 'IELTS'},
+             {url: '/enExams/', fa: 'TOEFL', en: 'TOEFL'},
+             {url: '/enExams/', fa: 'TOEIC', en: 'TOEIC'},
+             {url: '/enExams/', fa: 'SAT', en: 'SAT'},
+             {url: '/enExams/', fa: 'DUOLINGO', en: 'DUOLINGO'},
+             {url: '/enExams/', fa: 'PEARSON', en: 'PEARSON'},
+             {url: '/enExams/', fa: 'IGSCE', en: 'IGSCE'},
+             {url: '/enExams/', fa: 'ACT', en: 'ACT'},
+             {url: '/enExams/', fa: 'CELPIP', en: 'CELPIP'},
+             {url: '/enExams/', fa: 'OET', en: 'OET'},
+             {url: '/enExams/', fa: 'FCE', en: 'FCE'},
+             {url: '/enExams/', fa: 'CAE', en: 'CAE'},
+         ],
+
+         exams: [
+             {url: '/exams/', fa: 'TEF', en: 'TEF'},
+             {url: '/exams/', fa: 'TCF', en: 'TCF'},
+             {url: '/exams/', fa: 'DELF / DALF', en: 'DELF / DALF'},
+             {url: '/exams/', fa: 'DELE', en: 'DELE'},
+             {url: '/exams/', fa: 'CCSE', en: 'CCSE'},
+             {url: '/exams/', fa: 'Prøve i Dansk', en: 'Prøve i Dansk'},
+             {url: '/exams/', fa: 'TÖMER', en: 'TÖMER'},
+             {url: '/exams/', fa: 'Goethe', en: 'Goethe'},
+             {url: '/exams/', fa: 'TestDaF', en: 'TestDaF'},
+             {url: '/exams/', fa: 'HSK', en: 'HSK'},
+             {url: '/exams/', fa: 'JLPT', en: 'JLPT'},
+             {url: '/exams/', fa: 'HAMZA', en: 'HAMZA'},
+         ],
+
       }
    },
+
    {
-      id: 'exams',
-      url: '/exams',
-      fa: 'آزمون‌ها',
-      en: 'Exams',
-      children: [
-         { url: '/exams/ielts', fa: 'آیلتس', en: 'IELTS' },
-         { url: '/exams/toefl', fa: 'تافل', en: 'TOEFL' },
-         { url: '/exams/pte', fa: 'PTE', en: 'PTE' },
-         { url: '/exams/sat', fa: 'SAT', en: 'SAT' },
-      ],
+      id: 'join',
+      url: '/join',
+      fa: 'استخدام',
+      en: 'Join Us',
+
+      children: {
+         opportunities: [
+            {url: '/teachers/english', fa: 'استاد انگلیسی', en: 'English', icon: false, textIcon:'EN'},
+            {url: '/teachers/french', fa: 'استاد فرانسوی', en: 'French', icon: false, textIcon:'FR'},
+            {url: '/teachers/spanish', fa: 'استاد اسپانیایی', en: 'Spanish', icon: false, textIcon:'SP'},
+            {url: '/teachers/duth', fa: 'استاد هلندی', en: 'Dutch', icon: false, textIcon:'DU'},
+            {url: '/teachers/danish', fa: 'استاد دانمارکی', en: 'Danish', icon: false, textIcon:'DA'},
+            {url: '/teachers/turkish', fa: 'استاد ترکی استانبولی', en: 'Turkish', icon: false, textIcon:'TU'},
+            {url: '/teachers/german', fa: 'استاد آلمانی', en: 'German', icon: false, textIcon:'GE'},
+            {url: '/teachers/portuguese', fa: 'استاد پرتغالی', en: 'Portuguese', icon: false, textIcon:'PO'},
+            {url: '/teachers/chinese', fa: 'استاد چینی', en: 'Chinese', icon: false, textIcon:'CH'},
+            {url: '/teachers/korean', fa: 'استاد کره ای', en: 'Korean', icon: false, textIcon:'KO'},
+            {url: '/teachers/japanese', fa: 'استاد ژاپنی', en: 'Japanese', icon: false, textIcon:'JA'},
+            {url: '/teachers/arabic', fa: 'استاد عربی', en: 'Arabic', icon: false, textIcon:'AR'},
+            {url: '/office/', fa: 'منشی', en: 'Secretary', icon: true},
+            {url: '/office/', fa: 'بازاریاب', en: 'Marketing', icon: true},
+            {url: '/office/', fa: 'طراح گرافیک', en: 'Graphic Designer', icon: true},
+            {url: '/office/', fa: 'توسعه دهنده وب', en: 'Developer', icon: true},
+         ],
+      }
+
    },
 
-   { id: 'join', url: '/join', fa: 'استخدام', en: 'Join Prestige' },
-   { id: 'books', url: '/books', fa: 'کتاب‌ها', en: 'Books' },
+   {
+      id: 'books',
+      url: '/books',
+      fa: 'کتاب‌ها',
+      en: 'Books',
+
+      children: {
+         kids: [
+            {url: '/books/kids/', fa: 'Pockets', en: 'Pockets'},
+            {url: '/books/kids/', fa: 'Phonics', en: 'Phonics'},
+            {url: '/books/kids/', fa: 'First Friends', en: 'First Friends'},
+            {url: '/books/kids/', fa: 'Tiny Talk', en: 'Tiny Talk'},
+            {url: '/books/kids/', fa: "Let's Go", en: "Let's Go"},
+            {url: '/books/kids/', fa: 'Family and Friends', en: 'Family and Friends'},
+            {url: '/books/kids/', fa: 'Teen 2 Teen', en: 'Teen 2 Teen'},
+            {url: '/books/kids/', fa: 'Project', en: 'Project'},
+            {url: '/books/kids/', fa: 'Super Minds', en: 'Super Minds'},
+            {url: '/books/kids/', fa: 'Big English', en: 'Big English'},
+            {url: '/books/kids/', fa: 'Got it', en: 'Got it'},
+            {url: '/books/kids/', fa: 'Connect', en: 'Connect'},
+         ],
+
+         adults: [
+            {url: '/books/adults/', fa: 'Speak Out', en: 'Speak Out'},
+            {url: '/books/adults/', fa: 'Speak Now', en: 'Speak Now'},
+            {url: '/books/adults/', fa: 'Evolve', en: 'Evolve'},
+            {url: '/books/adults/', fa: 'English File', en: 'English File'},
+            {url: '/books/adults/', fa: 'English Result', en: 'English Result'},
+            {url: '/books/adults/', fa: 'Business Result', en: 'Business Result'},
+            {url: '/books/adults/', fa: 'Touchstone', en: 'Touchstone'},
+            {url: '/books/adults/', fa: 'Four Corners', en: 'Four Corners'},
+            {url: '/books/adults/', fa: 'Headway', en: 'Headway'},
+            {url: '/books/adults/', fa: 'Solutions', en: 'Solutions'},
+            {url: '/books/adults/', fa: 'Connectivity', en: 'Connectivity'},
+            {url: '/books/adults/', fa: 'Top Notch', en: 'Top Notch'}
+         ],
+
+         specialSkills: [
+            {url: '/books/special/', fa: 'The Apple Book', en: 'The Apple Book'},
+            {url: '/books/special/', fa: 'Academic Writing', en: 'Academic Writing'},
+            {url: '/books/special/', fa: 'Language Files', en: 'Language Files'},
+            {url: '/books/special/', fa: 'Linguistics, An Introduction', en: 'Linguistics, An Introduction'},
+            {url: '/books/special/', fa: 'Applied Linguistics', en: 'Applied Linguistics'},
+            {url: '/books/special/', fa: 'Street Talk', en: 'Street Talk'},
+            {url: '/books/special/', fa: 'How to', en: 'How to'},
+            {url: '/books/special/', fa: 'English Language Teaching', en: 'English Language Teaching'},
+            {url: '/books/special/', fa: 'Elements of Literature', en: 'Elements of Literature'},
+            {url: '/books/special/', fa: 'Literature & Composition', en: 'Literature & Composition'},
+            {url: '/books/special/', fa: 'American Accent Training', en: 'American Accent Training'},
+            {url: '/books/special/', fa: 'Active Listening', en: 'Active Listening'},
+         ],
+
+         otherLanguages: [
+            {url: '/books/moreLans/', fa: 'Le Nouveau Taxi !', en: 'Le Nouveau Taxi !'},
+            {url: '/books/otherLans/', fa: 'Alter Ego +', en: 'Alter Ego +'},
+            {url: '/books/otherLans/', fa: 'Mon Alter Ego', en: 'Mon Alter Ego'},
+            {url: '/books/otherLans/', fa: 'Aula Internacional', en: 'Aula Internacional'},
+            {url: '/books/otherLans/', fa: 'Nuevo Prisma', en: 'Nuevo Prisma'},
+            {url: '/books/otherLans/', fa: 'Nuovo Espresso', en: 'Nuovo Espresso'},
+            {url: '/books/otherLans/', fa: 'Progetto Italiano', en: 'Progetto Italiano'},
+            {url: '/books/otherLans/', fa: 'Momente', en: 'Momente'},
+            {url: '/books/otherLans/', fa: 'Netzwerk neu', en: 'Netzwerk neu'},
+            {url: '/books/otherLans/', fa: 'Menschen', en: 'Menschen'},
+            {url: '/books/moreLans/', fa: 'Samba', en: 'Samba'},
+            {url: '/books/moreLans/', fa: 'Novo Avenida Brasil', en: 'Novo Avenida Brasil'},
+         ],
+
+         moreLanguages: [
+            {url: '/books/moreLans/', fa: 'Videre mod dansk', en: 'Videre mod dansk'},
+            {url: '/books/moreLans/', fa: 'Bem Brasil', en: 'Bem Brasil'},
+            {url: '/books/moreLans/', fa: 'Português XXI', en: 'Português XXI'},
+            {url: '/books/otherLans/', fa: 'På vej til dansk', en: 'På vej til dansk'},
+            {url: '/books/otherLans/', fa: 'Vi taler dansk', en: 'Vi taler dansk'},
+            {url: '/books/moreLans/', fa: 'Midtvejs til dansk', en: 'Midtvejs til dansk'},
+            {url: '/books/moreLans/', fa: 'HSK Series', en: 'HSK Series'},
+            {url: '/books/moreLans/', fa: 'Yonsei Korean', en: 'Yonsei Korean'},
+            {url: '/books/moreLans/', fa: 'Sogang Korean', en: 'Sogang Korean'},
+            {url: '/books/moreLans/', fa: 'Nour Al Arabiya', en: 'Nour Al Arabiya'},
+            {url: '/books/otherLans/', fa: 'Yeni İstanbul', en: 'Yeni İstanbul'},
+            {url: '/books/moreLans/', fa: 'Uluslararası Öğrenciler İçin Türkçe', en: 'Uluslararası Öğrenciler İçin Türkçe'},
+         ],
+      }
+   },
+
    { id: 'level', url: '/level', fa: 'تعیین سطح', en: 'Level test' },
-   { id: 'about', url: '/about', fa: 'دربارهٔ ما', en: 'About us' },
+   { id: 'about', url: '/about', fa: 'درباره ی ما', en: 'About us' },
 ]
 
 // Each mega menu owns its composition: feature image, copy, image position, and link columns.
 const megaMenus = {
-   exams: {
-      image: '/pics/exams/IELTS-.webp',
-      imageAlt: 'IELTS preparation course',
-      imagePosition: 'left',
-
-      fa: {
-         eyebrow: 'آزمون‌های بین‌المللی',
-         title: 'با آمادگی کامل وارد آزمون شو',
-         description: 'برنامه‌ریزی، آموزش و آزمون‌های شبیه‌سازی‌شده برای نتیجه‌ای مطمئن.'
-      },
-      en: {
-         eyebrow: 'International exams',
-         title: 'Walk into your exam prepared',
-         description: 'Planning, instruction, and mock exams designed for confident results.'
-      },
-
-      columns: [
-         { fa: 'مدارک و دوره‌ها', en: 'Qualifications', items: navItems[2].children },
-      ],
-   },
-
    courses: {
-      image: '/pics/SectionB.jpg',
-      imageAlt: 'Students in a Prestige class',
-      imagePosition: 'right',
-
-      fa: {
-         eyebrow: 'دوره‌های هامینگ',
-         title: 'کلاسی متناسب با مسیر تو',
-         description: 'از کلاس‌های خصوصی تا برنامه‌های گروهی برای هر سن و هدف.'
-      },
-      en: {
-         eyebrow: 'Prestige courses',
-         title: 'A class built around your path',
-         description: 'Private and group programmes for every age and learning goal.'
-      },
+      type: 'raw',
+      imgName: 'Languages.png',
+      imgSize: 'Vertical',
+      imgPosition: 'Left',
 
       columns: [
          {
@@ -193,17 +291,59 @@ const megaMenus = {
             en: 'Jobs',
             items: navItems[1].children.jobs
          },
+         {
+            fa: 'آمادگی آزمون',
+            en: 'English Exam Prep',
+            items: navItems[1].children.enExams
+         },
+         {
+            fa: 'دیگر آزمون ها',
+            en: 'Other Exams',
+            items: navItems[1].children.exams
+         },
       ],
    },
 
-   training: {
-      image: '/pics/pcGlamour.jpg',
-      imageAlt: 'Teacher training at Prestige',
-      imagePosition: 'left',
-      fa: { eyebrow: 'تربیت مدرس', title: 'مسیر حرفه‌ای تدریس را شروع کن', description: 'گواهی‌ها و مهارت‌هایی برای تدریس مؤثر در کلاس‌های امروز.' },
-      en: { eyebrow: 'Teacher training', title: 'Start your professional teaching path', description: 'Qualifications and skills for effective modern classrooms.' },
+   join: {
+      type: 'visual',
+      imgName: 'JoinUs.png',
+      imgSize: 'Square',
+      imgPosition: 'Right',
+      items: navItems[2].children.opportunities
+   },
+
+   books: {
+      type: 'raw',
+      imgName: 'all-books.png',
+      imgSize: 'Square',
+      imgPosition: 'Right',
+
       columns: [
-         { fa: 'مدارک و دوره‌ها', en: 'Qualifications', items: navItems[2].children },
+         {
+            fa: 'Kids English',
+            en: 'Kids English',
+            items: navItems[3].children.kids
+         },
+         {
+            fa: 'Adults English',
+            en: 'Adults English',
+            items: navItems[3].children.adults
+         },
+         {
+            fa: 'Special',
+            en: 'Special',
+            items: navItems[3].children.specialSkills
+         },
+         {
+            fa: 'Other Languages',
+            en: 'Other Languages',
+            items: navItems[3].children.otherLanguages
+         },
+         {
+            fa: 'More Languages',
+            en: 'More Languages',
+            items: navItems[3].children.moreLanguages
+         },
       ],
    },
 }
@@ -267,38 +407,39 @@ function Navbar() {
                         onMouseEnter={() => hasSubmenu ? setOpenMenuId(item.id) : closeMenu()}
                         onFocusCapture={() => hasSubmenu ? setOpenMenuId(item.id) : closeMenu()}
                      >
-                        <div className="flex items-center">
+                        <div className="flex items-center justify-end">
                            <Link
                               href={item.url}
                               className={`relative isolate px-3 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''} ${currentItem ? 'font-(family-name:--vazirb)' : ''}`}
                               aria-current={currentItem ? 'page' : undefined}
                               onClick={closeMenu}
                            >
-                              {label(item)}
-                              <span
-                                 aria-hidden="true"
-                                 className={`nav-active-indicator absolute inset-1 -z-10 rounded-md transition-opacity duration-200 ${currentItem ? 'opacity-100' : 'opacity-0'}`}
-                              />
-                              {!currentItem && (
+                              <div className='flex items-center gap-1'>
+                                 {label(item)}
+
+                                 {
+                                    hasSubmenu && (
+                                    <ChevronDown aria-hidden="true" size={14} className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'} />
+                                 )}
+                              </div>
+
+                              {currentItem && (
+                                 <span
+                                    aria-hidden="true"
+                                    className="absolute inset-1 -z-10 rounded-md bg-black/5"
+                                 />
+                              )}
+
+                              {
+                                 !currentItem && (
                                  <span
                                     aria-hidden="true"
                                     className={`absolute inset-x-3 bottom-1 h-0.5 origin-center bg-current transition-transform duration-200 group-hover:scale-x-100 group-focus-within:scale-x-100 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}
                                  />
                               )}
+
                            </Link>
 
-                           {hasSubmenu && (
-                              <button
-                                 type="button"
-                                 aria-label={`${label(item)} menu`}
-                                 aria-expanded={isOpen}
-                                 aria-controls={`${item.id}-submenu`}
-                                 className="mr-[-0.35rem] cursor-pointer p-1 transition-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-                                 onClick={() => setOpenMenuId(isOpen ? null : item.id)}
-                              >
-                                 <ChevronDown aria-hidden="true" size={14} className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'} />
-                              </button>
-                           )}
                         </div>
 
                      </div>
@@ -342,7 +483,8 @@ function Navbar() {
             </div>
          </nav>
 
-         {openMegaMenu && (
+         {
+            openMegaMenu && (
             <div id={`${openItem.id}-submenu`} className="fixed inset-0 z-40 hidden min-[1071px]:block" aria-label={`${label(openItem)} submenu`}>
                <div className="absolute inset-0 bg-black/20 backdrop-blur-md" onMouseEnter={closeMenu} onClick={closeMenu} />
                <section
@@ -350,30 +492,97 @@ function Navbar() {
                   onClick={(event) => event.stopPropagation()}
                >
 
-                  <div className={`flex items-center px-10 py-12 ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''}`} dir={language === 'fa' ? 'rtl' : 'ltr'}>
-                        <div className="grid w-full gap-x-12 gap-y-10 grid-cols-10">
+                  <div className={`flex items-stretch gap-10 px-10 py-12 ${openMegaMenu.imgPosition === 'Right' && 'flex-row-reverse'} ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''}`} dir={language === 'fa' && openItem.id !== 'books' ? 'rtl' : 'ltr'}>
+                        <div className={`w-full flex justify-between`}>
                            {
-                              openMegaMenu.columns.map((column, index) => (
-                              <div className='' key={index}>
-                                 <h3 className="text-sm font-semibold">{label(column)}</h3>
-                                 <ul className="whitespace-nowrap">
-                                    {
-                                       column.items.map((child, index) => (
-                                          <li key={index}>
-                                             <Link
-                                                href={child.url}
-                                                className="group/link flex rounded-md py-2 text-black transition-colors focus-visible:bg-black/5 focus-visible:text-black focus-visible:outline-none"
-                                                onClick={closeMenu}
-                                             >
-                                                <span className="text-xs border-b border-transparent group-hover/link:border-current">{label(child)}</span>
-                                             </Link>
-                                          </li>
-                                       ))
-                                    }
-                                 </ul>
-                              </div>
-                           ))}
+                              openMegaMenu.type === 'raw' ?
+
+                                 openMegaMenu.columns.map((column, index) => (
+                                    <div className='' key={index}>
+                                       <h3 className="text-sm font-semibold ">{label(column)}</h3>
+                                       <ul className=''>
+                                          {
+                                             column.items.map((child, index) => (
+                                                <li key={index}>
+                                                   <Link
+                                                      href={child.url}
+                                                      className={`group/link flex rounded-md py-2 text-black transition-colors focus-visible:bg-black/5 focus-visible:text-black focus-visible:outline-none`}
+                                                      onClick={closeMenu}
+                                                   >
+                                                      <span className="text-xs border-b border-transparent group-hover/link:border-current">{label(child)}</span>
+                                                   </Link>
+                                                </li>
+                                             ))
+                                          }
+                                       </ul>
+                                    </div>
+                                 ))
+                              :
+
+                              openMegaMenu.type === 'visual' ?
+                                 <div className="w-full flex flex-wrap gap-5">
+                                    {openMegaMenu?.items?.map((opportunity, index) => (
+                                       <div
+                                          key={index}
+                                          className="flex grow basis-40 max-w-52 items-center justify-between p-2 rounded-full bg-gray-50 border border-transparent hover:border-black/50 active:scale-98 cursor-pointer"
+                                       >
+                                          <div className="flex shrink-0 justify-center items-center bg-gray-100 w-10 h-10 rounded-full">
+                                             {opportunity.icon ? (
+                                                <div className="relative w-8 h-8 overflow-hidden">
+                                                   <Image
+                                                      src={`/pics/navbar/icons/${opportunity.en}.svg`}
+                                                      alt={`${opportunity.en} icon`}
+                                                      fill
+                                                   />
+                                                </div>
+                                             ) : (
+                                                <div className="text-gray-500 font-(family-name:--font-bold)">
+                                                   {opportunity.textIcon}
+                                                </div>
+                                             )}
+                                          </div>
+
+                                          <div className="px-2 whitespace-nowrap">
+                                             {opportunity.fa}
+                                          </div>
+                                       </div>
+                                    ))}
+                                 </div>
+                              :
+
+                              <div className='text-red-500'>MegaMenu Invalid Type</div>
+                           }
                         </div>
+
+                        {
+                           openMegaMenu.imgName &&
+
+                              openMegaMenu.imgSize === 'Vertical' ?
+                                 <div className='relative shrink-0 w-50 self-stretch border'>
+                                    <Image
+                                       className='object-cover'
+                                       src={`/pics/navbar/${openMegaMenu.imgName}`}
+                                       alt='Mega Menu Image'
+                                       fill
+                                    />
+                                 </div>
+
+                              :
+
+                              openMegaMenu.imgSize === 'Square' ?
+                                 <div className='relative shrink-0 w-100 self-stretch border'>
+                                    <Image
+                                       className='object-cover'
+                                       src={`/pics/navbar/${openMegaMenu.imgName}`}
+                                       alt='Mega Menu Image'
+                                       fill
+                                    />
+                                 </div>
+
+                              :
+
+                              <div className='text-red-500'>Unsupported Image Size</div>
+                        }
                      </div>
                </section>
             </div>
@@ -383,7 +592,7 @@ function Navbar() {
             <Ham />
             <Link href="/" className="absolute right-3 top-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current">
                <span className="relative block size-10 overflow-hidden">
-                  <Image className="object-contain" src="/logo.png" alt="Prestige home" fill sizes="40px" />
+                  <Image className="object-contain" src="/logo.webp" alt="Humming home" fill sizes="40px" />
                </span>
             </Link>
          </div>

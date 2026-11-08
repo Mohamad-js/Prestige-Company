@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191 153" width="191" height="153" role="img" aria-label="Graphic designer computer illustration icon">
+  <title>Graphic designer</title>
+  <!-- Monitor and stand; negative center keeps the display transparent -->
+  <path d="M33 18 H166 C173.3 18 179 23.8 179 31.5 V109.7 C179 118 173.7 123 165.6 123 H115.9 L118 138.5 H131 C134.4 138.5 136.5 140.2 136.5 143 C136.5 145.7 134.3 147 131 147 H64.7 C61.5 147 60 145.5 60 142.7 C60 140.2 62 138.5 65 138.5 H81.4 L83.4 123 H33.3 C25 123 20 117.8 20 109.7 V31.5 C20 23.7 25.5 18 33 18 Z M33 24 C29 24 26 27 26 31 V108 C26 112 29 114 33 114 H165 C169 114 172 112 172 108 V31 C172 27 169 24 165 24 Z" fill="#000000" fill-rule="evenodd"/>
+  <!-- Bars for the editing software interface -->
+  <path d="M37 33 H162 C164.1 33 165 34 165 36 V38 C165 39.9 164 41 162 41 H37 C35 41 34 40 34 38 V36 C34 34 35 33 37 33 Z" fill="#000000"/>
+  <rect x="38" y="52" width="7" height="11" rx="2.7" fill="#000000"/>
+  <rect x="34" y="71" width="15" height="12" rx="2.5" fill="#000000"/>
+  <rect x="34" y="90" width="15" height="10" rx="2.5" fill="#000000"/>
+  <rect x="141" y="49" width="24" height="8" rx="2.6" fill="#000000"/>
+  <rect x="141" y="64" width="24" height="8" rx="2.6" fill="#000000"/>
+  <!-- Transparent artwork window and softly rounded frame -->
+  <path d="M62 37 H127 C131.2 37 133.5 39.7 133.5 44 V99 C133.5 104 130.5 106 126.5 106 H62.5 C58.3 106 56.5 103 56.5 99 V44 C56.5 39.6 59 37 62 37 Z M63.8 42.2 C62.1 42.2 61.4 43.3 61.4 45 V98.3 C61.4 100 62.4 100.9 64 100.9 H126 C127.6 100.9 128.7 99.7 128.7 98.3 V45 C128.7 43.1 127.5 42.2 126 42.2Z" fill="#000000" fill-rule="evenodd"/>
+  <!-- Thumbnail: sun and two mountain peaks -->
+  <circle cx="110.2" cy="59.1" r="7.8" fill="#000000"/>
+  <path d="M68.9 90.4 83.6 71.9 C85.3 69.6 87.4 69.4 89.3 71.6 L96.8 80.7 C97.9 82.1 99 82.8 100.2 81.1 L104.7 75.8 C106.8 73.1 109 73.4 111.3 76 L120.6 88.9 C122.3 91.4 120.8 94.2 118 94.2 H71 C67.8 94.2 67 92.5 68.9 90.4 Z" fill="#000000"/>
+</svg>

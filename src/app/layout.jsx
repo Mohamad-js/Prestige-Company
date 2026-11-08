@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide, Rubik_Marker_Hatch } from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide, Rubik_Marker_Hatch, Ramabhadra} from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import localFont from 'next/font/local'
@@ -16,6 +16,12 @@ const vazirb = localFont({
   src: '../../public/fonts/vazir/Vazir-Bold.ttf',
   display: 'swap',
   variable: '--vazirb',
+})
+
+const motevasel = localFont({
+  src: '../../public/fonts/Motevasel/Motavaseliyan.ttf',
+  display: 'swap',
+  variable: '--motevasel',
 })
 
 const geistSans = Geist({
@@ -70,6 +76,13 @@ const marker = Rubik_Marker_Hatch({
    display: "swap",
 });
 
+const bold = Ramabhadra({
+   weight: "400",
+   variable: "--font-bold",
+   subsets: ["latin"],
+   display: "swap",
+});
+
 export const metadata = {
    title: "Huming Institution",
    description: "The Place Where Language Was Born Again",
@@ -77,9 +90,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${vazirt.variable} ${vazirb.variable}`}>
+    <html lang="en" className={`${vazirt.variable} ${vazirb.variable} ${motevasel.variable}`}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${quicksand.variable} ${msMadi.variable} ${comforta.variable} ${audiowide.variable} ${marker.variable}  antialiased`}
+        className={`
+            ${geistSans.variable}
+            ${geistMono.variable}
+            ${dancingScript.variable}
+            ${quicksand.variable}
+            ${msMadi.variable}
+            ${comforta.variable}
+            ${audiowide.variable}
+            ${marker.variable}
+            ${bold.variable}
+           antialiased`}
       >
          
          <SmoothScrolling>
