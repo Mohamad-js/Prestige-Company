@@ -11,25 +11,37 @@ export default function Home() {
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center overflow-hidden">
          <div className="w-full min-h-dvh flex flex-col justify-center items-center z-2">
 
-            <div className="relative w-full px-10 min-h-200 flex justify-between items-center">
-               <div className='w-100 flex flex-col justify-start'>
+            <div className="relative w-full px-10 min-h-150 flex justify-center items-center">
+               <div className='absolute top-0 left-0 w-full h-150 flex flex-col'>
+                  <Image
+                      className='object-cover'
+                      src='/MainImage.jpg'
+                      alt='Ghazal Logo'
+                      fill
+                  />
+                  
+               </div>
+
+               <div className='absolute top-0 left-0 w-full h-full bg-black opacity-80'></div>
+
+               <div className='w-100 flex flex-col justify-center items-center gap-5'>
                   <div className='relative w-full h-40 flex flex-col'>
                      <Image
                          className='object-contain'
-                         src='/LogoText.webp'
-                         alt='Our Logo'
+                         src='/GLogo.png'
+                         alt='Ghazal Logo'
                          fill
                      />
                   </div>
-                  
-                  <div className="relative bottom-0 mb-10 tracking-widest z-1 text-xl font-light text-black font-(family-name:--motevasel)" dir='rtl'>غزل</div>
-   
+
+                  <div className="relative bottom-0 mb-5 tracking-widest z-1 text-3xl font-light text-white font-(family-name:--motevasel)" dir='rtl'>موسسه زبان های خارجی غزل</div>
+
                   <div className='flex gap-5'>
-                     <button className="relative font-(family-name:--vazirt) z-1 bg-[#A17BE9] text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">
+                     <button className="relative font-(family-name:--vazirt) z-1 bg-white text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">
                         مشاوره تخصصی
                      </button>
-   
-                     <button className="relative font-(family-name:--vazirt) z-1 text-black bg-[#E6D9FC] border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">
+
+                     <button className="relative font-(family-name:--vazirt) z-1 text-black bg-white border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">
                         تعیین سطح
                      </button>
                   </div>
