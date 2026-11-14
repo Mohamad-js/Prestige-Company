@@ -452,7 +452,7 @@ function Navbar() {
                   <span className="relative block size-10 overflow-hidden">
                      <Image
                         className="object-contain"
-                        src="/GLogo.png"
+                        src="/OurLogo.png"
                         alt="Humming home"
                         fill
                         sizes="40px"
@@ -474,7 +474,7 @@ function Navbar() {
          {
             openMegaMenu && (
             <div id={`${openItem.id}-submenu`} className="fixed inset-0 z-40 hidden min-[1071px]:block" aria-label={`${label(openItem)} submenu`}>
-               <div className="absolute inset-0 bg-black/20 backdrop-blur-md" onMouseEnter={closeMenu} onClick={closeMenu} />
+               <div className="absolute inset-0 bg-black/80" onMouseEnter={closeMenu} onClick={closeMenu} />
                <section
                   className="absolute inset-x-0 top-15 overflow-y-auto bg-white text-black shadow-2xl backdrop-blur-xl"
                   onClick={(event) => event.stopPropagation()}
@@ -580,7 +580,7 @@ function Navbar() {
             <Ham />
             <Link href="/" className="absolute right-3 top-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current">
                <span className="relative block size-10 overflow-hidden">
-                  <Image className="object-contain" src="/Logo.png" alt="Humming home" fill sizes="40px" />
+                  <Image className="object-contain" src="/OurLogo.png" alt="Ghazal Center" fill sizes="40px" />
                </span>
             </Link>
          </div>

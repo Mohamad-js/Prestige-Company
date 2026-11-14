@@ -72,7 +72,12 @@ function Account(){
          <div className="w-70 h-100 bg-white/30 px-5 rounded-2xl backdrop-blur-xl shadow-2xl flex flex-col justify-evenly items-center">
             <div className="w-full flex flex-col items-center">
                <div className="relative w-1/2 h-11">
-                  <Image className="w-full h-full object-contain rounded-2xl" src="/illustrations/logo.png" fill size={50} alt="Logo" />
+                  <Image
+                     className="w-full h-full object-contain rounded-2xl"
+                     src="/OurLogo.png"
+                     fill size={50}
+                     alt="Logo"
+                  />
                </div>
                <div className="text-3xl tracking-widest text-white font-[family-name:var(--font-dancing-script),cursive]">Prestige</div>
             </div>

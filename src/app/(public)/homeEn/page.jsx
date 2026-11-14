@@ -288,7 +288,7 @@ export default function Home() {
                <div className="absolute right-0 w-1/4 h-fit flex flex-col justify-center items-center gap-3">
                   <div className="relative size-50 overflow-hidden flex justify-center items-center">
                      <Image className='object-contain drop-shadow-sm'
-                        src='/illustrations/logo.png'
+                        src='/OurLogo.png'
                         alt='logo'
                         fill
                         size={100}

@@ -83,14 +83,37 @@ const bold = Ramabhadra({
    display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata = {
-   title: "Huming Institution",
-   description: "The Place Where Language Was Born Again",
+   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+   title: {
+      default: "Ghazal Center | مرکز زبان غزل",
+      template: "%s | Ghazal Center",
+   },
+   description: "موسسه زبان‌های خارجی غزل؛ دوره‌های آموزش زبان انگلیسی و زبان‌های خارجی، آمادگی آزمون‌های بین‌المللی و کلاس تخصصی اکسنت.",
+   applicationName: "Ghazal Center",
+   keywords: ["موسسه زبان غزل", "آموزش زبان انگلیسی", "کلاس زبان", "آمادگی آیلتس", "آمادگی تافل", "آموزش زبان‌های خارجی", "accent course"],
+   alternates: { languages: { fa: "/", en: "/homeEn" } },
+   openGraph: {
+      type: "website",
+      siteName: "Ghazal Center",
+      title: "Ghazal Center | مرکز زبان غزل",
+      description: "دوره‌های آموزش زبان‌های خارجی، آمادگی آزمون‌های بین‌المللی و کلاس تخصصی اکسنت.",
+      locale: "fa_IR",
+      images: [{ url: "/OurLogo.png", width: 1500, height: 1500, alt: "نشان Ghazal Center" }],
+   },
+   twitter: {
+      card: "summary",
+      title: "Ghazal Center | مرکز زبان غزل",
+      description: "دوره‌های آموزش زبان‌های خارجی و آمادگی آزمون‌های بین‌المللی.",
+      images: ["/OurLogo.png"],
+   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${vazirt.variable} ${vazirb.variable} ${motevasel.variable}`}>
+    <html lang="fa" className={`${vazirt.variable} ${vazirb.variable} ${motevasel.variable}`}>
       <body
         className={`
             ${geistSans.variable}
