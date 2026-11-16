@@ -352,8 +352,33 @@ function Navbar() {
    const pathname = usePathname()
    const router = useRouter()
    const headerRef = useRef(null)
+   const previousScrollY = useRef(0)
    const [language, setLanguage] = useState('fa')
    const [openMenuId, setOpenMenuId] = useState(null)
+   const [isScrolled, setIsScrolled] = useState(false)
+   const [isVisible, setIsVisible] = useState(true)
+
+   useEffect(() => {
+      const updateScrollState = () => {
+         const currentScrollY = window.scrollY
+         setIsScrolled(currentScrollY > 8)
+
+         if (currentScrollY <= 8) {
+            setIsVisible(true)
+         } else if (currentScrollY < previousScrollY.current) {
+            setIsVisible(true)
+         } else if (currentScrollY > previousScrollY.current && currentScrollY >= window.innerHeight * 0.5) {
+            setIsVisible(false)
+         }
+
+         previousScrollY.current = currentScrollY
+      }
+
+      previousScrollY.current = window.scrollY
+      setIsScrolled(window.scrollY > 8)
+      window.addEventListener('scroll', updateScrollState, { passive: true })
+      return () => window.removeEventListener('scroll', updateScrollState)
+   }, [])
 
    const closeMenu = () => setOpenMenuId(null)
 
@@ -391,7 +416,7 @@ function Navbar() {
       >
          <nav
             aria-label="Primary navigation"
-            className="absolute bg-white border-0 border-b-2 top-0 z-50 flex h-15 w-full flex-row-reverse items-end justify-between gap-x-15 px-5 max-[1070px]:invisible"
+            className={`absolute top-0 z-50 flex h-15 w-full flex-row-reverse items-end justify-between gap-x-15 border-0 px-10 transition-all duration-300 ease-out max-[1070px]:invisible ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'bg-white text-black shadow-sm' : 'bg-transparent text-white'}`}
             onMouseEnter={closeMenu}
          >
             <div className="flex items-center" dir={language === 'fa' ? 'rtl' : 'ltr'}>
@@ -449,7 +474,7 @@ function Navbar() {
 
             <div className="flex w-30 h-full items-center justify-between">
                <Link href="/" className="">
-                  <span className="relative block size-10 overflow-hidden">
+                  <span className="relative block size-7 overflow-hidden">
                      <Image
                         className="object-contain"
                         src="/OurLogo.png"
@@ -576,8 +601,8 @@ function Navbar() {
             </div>
          )}
 
-         <div className="invisible top-0 left-0 z-3 flex min-w-full justify-between max-[1070px]:visible">
-            <Ham />
+         <div className={`invisible top-0 left-0 z-3 flex min-w-full justify-between transition-transform duration-300 ease-out max-[1070px]:visible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+            <Ham isScrolled={isScrolled} isVisible={isVisible} />
             <Link href="/" className="absolute right-3 top-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current">
                <span className="relative block size-10 overflow-hidden">
                   <Image className="object-contain" src="/OurLogo.png" alt="Ghazal Center" fill sizes="40px" />

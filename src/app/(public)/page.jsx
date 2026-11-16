@@ -1,94 +1,155 @@
 'use client'
 import Image from "next/image";
-
-
-
+import {AccordionOS} from "@/components/accordionos";
 
 
 export default function Home() {
+
+   const courseData = [
+      {
+         name: 'اکسنت',
+         title: 'آموزش لهجه های انگلیسی در سطح نیتیو',
+         image: '/pics/courses/Accent.png',
+         alt: 'English Accent Course Image',
+         backgroundClass: 'bg-[#d0b3ff]',
+         content: [
+            'آموزش لهجه های American و British',
+            'تمرین های ساده اما تخصصی برای تسلط بر روی آوای هر لهجه',
+            'تقویت مهارت های Listening و Speaking با درک عمیق از صداها',
+            'بدون هیچگونه محدودیت سنی و مناسب همه سنین'
+         ]
+      },
+      {
+         name: 'نتفلیکس',
+         title: 'تقویت مهارت شنیداری با فیلم و سریال',
+         image: '/pics/courses/Netflix.png',
+         alt: 'English Netflix Course Image',
+         backgroundClass: 'bg-[#75cfff]',
+         content: [
+            'آموزش اختصاصی تکنیک های شنیداری مهم',
+            'آموزش و تمرین تکنیک Shadowing برای تلفظ و لهجه بهتر',
+            'آموزش گویش ها و تکنیک های درک هر گویش',
+            'درک عمیق از Linking و لهجه در زبان انگلیسی'
+         ]
+      },
+      {
+         name: 'استریت',
+         title: 'تقویت مکالمه و محاوره ی طبیعی انگلیسی',
+         image: '/pics/courses/Street.png',
+         alt: 'English Street Course Image',
+         backgroundClass: 'bg-[#fff891]',
+         content: [
+            'طبیعی سازی مکالمه با آموزش و تمرین فرمول های Collocations',
+            'آموزش اصطلاحات روزمره و کاربردی در محاوره ی انگلیسی',
+            'جلسات Free Discussion برای تمرین و استفاده از مطالب آموزش داده شده',
+            'تقویت مکالمه عمومی برای مهاجرت و مکالمه تخصصی برای آزمون های بین المللی'
+         ]
+      },
+      {
+         name: 'رنگاهنگ',
+         title: 'آموزش زبان انگلیسی به کودکان با رنگ و آهنگ',
+         image: '/pics/courses/Rangahang.png',
+         alt: 'English Rangahang Course Image',
+         backgroundClass: 'bg-[#7af5ca]',
+         content: [
+            'آموزش زبان با استفاده از آهنگ، نقاشی و بازی های مختلف',
+            'تنوع در مدت زمان جلسات براساس علاقه کودک شنا: ۳۰، ۴۵ و ۶۰ دقیقه',
+            'استفاده از اساتید متخصص در حوزه ی آموزش زبان به کودکان',
+            'مناسب همه ی کودکان زیر ۷ سال'
+         ]
+      },
+      {
+         name: 'بحث آزاد',
+         title: 'کلاس های ویژه ی مکالمه و بحث آزاد',
+         image: '/pics/courses/FreeDiscussion.png',
+         alt: 'English Free Discussion Course Image',
+         backgroundClass: 'bg-[#ffa69e]',
+         content: [
+            'آموزش و تمرین ریز مهارت های مکالمه به زبان انگلیسی',
+            'استفاده از تسک های بسیار متنوع برای مکالمه',
+            'آموزش تکنیک های ضروری برای مکالمات بلند و چالش برانگیز',
+            'در دسترس برای هر دو سطح متوسط و پیشرفته',
+         ]
+      },
+   ]
 
    return (
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center overflow-hidden">
          <div className="w-full min-h-dvh flex flex-col justify-center items-center z-2">
 
-            <div className="relative w-full px-10 min-h-150 flex justify-center items-center">
-               <div className='absolute top-0 left-0 w-full h-150 flex flex-col'>
-                  <Image
-                      className='object-cover'
-                      src='/MainImage.jpg'
-                      alt='Ghazal Logo'
-                      fill
+            <div className="relative w-full h-svh min-h-svh overflow-hidden flex justify-center items-center">
+
+               <div className='relative z-20 w-full h-full min-h-0 flex justify-center items-start'>
+                  <AccordionOS
+                     className="accordion-os-fullscreen"
+                     overlayText="GHAZAL"
+                     containerWidth="100%"
+                     containerHeight="83.333svh"
+                     autoPlayInterval={5000}
                   />
-                  
+
+
+                  {/*<div className='w-150 flex justify-center items-center flex-col'>*/}
+                  {/*   <div className="relative mb-5 tracking-widest z-1 text-3xl font-light text-white font-(family-name:--motevasel)" dir='rtl'>آموزشگاه زبان های خارجی غزل</div>*/}
+
+                  {/*   <div className='flex gap-5'>*/}
+                  {/*      <button className="relative font-(family-name:--vazirt) z-1 bg-white text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">*/}
+                  {/*         مشاوره تخصصی*/}
+                  {/*      </button>*/}
+
+                  {/*      <button className="relative font-(family-name:--vazirt) z-1 text-black bg-white border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">*/}
+                  {/*         تعیین سطح*/}
+                  {/*      </button>*/}
+                  {/*   </div>*/}
+                  {/*</div>*/}
                </div>
 
-               <div className='absolute top-0 left-0 w-full h-full bg-black opacity-80'></div>
-
-               <div className='w-100 flex flex-col justify-center items-center gap-5'>
-                  <div className='relative w-full h-40 flex flex-col'>
-                     <Image
-                         className='object-contain'
-                         src='/OurLogo.png'
-                         alt='Ghazal Logo'
-                         fill
-                     />
-                  </div>
-
-                  <div className="relative bottom-0 mb-5 tracking-widest z-1 text-3xl font-light text-white font-(family-name:--motevasel)" dir='rtl'>موسسه زبان های خارجی غزل</div>
-
-                  <div className='flex gap-5'>
-                     <button className="relative font-(family-name:--vazirt) z-1 bg-white text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">
-                        مشاوره تخصصی
-                     </button>
-
-                     <button className="relative font-(family-name:--vazirt) z-1 text-black bg-white border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">
-                        تعیین سطح
-                     </button>
-                  </div>
-               </div>
             </div>
 
             <div className="z-2 w-full min-h-dvh flex flex-col justify-start items-end py-3 px-10">
-               <div className="w-full flex flex-col justify-start items-center">
+               <div className="w-full text-black py-3 rounded-3xl tracking-widest text-2xl text-center font-(family-name:--vazirt)">
+                  دوره های خاص ما
+               </div>
 
-                  <div className="w-full text-black py-3 rounded-3xl tracking-widest text-2xl text-center font-(family-name:--vazirt)">
-                     دوره های خاص ما
-                  </div>
+               <div className="w-full flex gap-10 flex-col justify-start items-center">
+                  {
+                     courseData.map((course, index) => (
+                        <div key={index} className={`w-full h-90 ${course.backgroundClass} border rounded-3xl flex gap-5 justify-between`}>
+                           <div className='relative min-w-90 min-h-full rounded-3xl overflow-hidden'>
+                              <Image
+                                 className='object-cover'
+                                 src={course.image}
+                                 alt={course.alt}
+                                 fill
+                                 sizes='(max-width: 640px) 100vw, 400px'
+                                 loading='eager'
+                              />
+                           </div>
 
-                  <div className='w-full flex flex-col gap-10 text-black rounded-3xl text-center'>
-                     <div className='w-full h-90 bg-gradient-to-r from-violet-200 to-pink-200 border rounded-3xl flex gap-5 justify-between'>
-                        <div className='relative min-w-90 min-h-full rounded-3xl overflow-hidden'>
-                           <Image
-                              className='object-cover'
-                              src='/accent.png'
-                              alt='Accents'
-                              fill
-                              sizes='(max-width: 640px) 100vw, 400px'
-                              loading='eager'
-                           />
-                        </div>
-
-                        <div dir='rtl' className='w-full h-full flex p-7 flex-col gap-5 justify-between items-start font-(family-name:--vazirt)'>
-                           <div className='flex flex-col gap-3'>
-                              <div className='flex gap-3 items-center'>
-                                 <div className='text-3xl'>دوره ی</div>
-                                 <div className='text-3xl px-4 py-1 text-white font-(family-name:--motevasel) rounded-3xl bg-gradient-to-r from-fuchsia-600 to-pink-600'>اکسنت</div>
+                           <div dir='rtl' className='w-full h-full flex p-7 flex-col gap-5 justify-between items-start font-(family-name:--vazirt)'>
+                              <div className='flex flex-col gap-3'>
+                                 <div className='flex gap-3 items-center'>
+                                    <div className='text-3xl'>دوره ی</div>
+                                    <div className='text-3xl px-4 py-1 text-white font-(family-name:--motevasel) rounded-3xl bg-gradient-to-r from-fuchsia-600 to-pink-600'>{course.name}</div>
+                                 </div>
+                                 <div className='text-black font-semibold text-xl'>{course.title}</div>
                               </div>
-                              <div className='text-black font-semibold text-xl'>کلاس های ساخت لهجه انگلیسی در سطح نیتیو</div>
-                           </div>
-                           <div className='text-lg flex flex-col items-start'>
-                              <p>- آموزش لهجه های American و British</p>
-                              <p>- تمرین های ساده اما تخصصی برای تسلط بر روی آوای هر لهجه</p>
-                              <p>- تقویت مهارت های Listening و Speaking با درک عمیق از صداها</p>
-                              <p>- بدون هیچگونه محدودیت سنی و مناسب همه سنین</p>
-                           </div>
-                           <div className='flex gap-5'>
-                              <button className='px-4 py-2 rounded-3xl bg-pink-100 text-black cursor-pointer hover:bg-white active:scale-97'>اطلاعات بیشتر</button>
-                              <button className='px-4 py-2 rounded-3xl bg-pink-100 text-black cursor-pointer hover:bg-white active:scale-97'>ثبت نام</button>
+                              <ul className='text-lg list-disc ps-6'>
+                                 {
+                                    course.content.map((item, index) => (
+                                       <li key={index} className=''>{item}</li>
+                                    ))
+                                 }
+                              </ul>
+                              <div className='flex gap-5'>
+                                 <button className='px-4 py-2 rounded-3xl bg-white text-black cursor-pointer hover:bg-white active:scale-97'>اطلاعات بیشتر</button>
+                                 <button className='px-4 py-2 rounded-3xl bg-white text-black cursor-pointer hover:bg-white active:scale-97'>ثبت نام</button>
+                              </div>
                            </div>
                         </div>
-                     </div>
-                  </div>
+                     ))
+                  }
+
                </div>
             </div>
          </div>
@@ -97,7 +158,6 @@ export default function Home() {
             <div className="w-full text-black py-3 rounded-3xl bg-white tracking-widest text-2xl text-center">دوره های آمادگی برای آزمون های بین المللی</div>
 
             <div className='w-full flex flex-col gap-10'>
-
                <div className='w-full flex justify-between items-center gap-10'>
                   <div className="relative bg-white/90 border shadow-sm flex-1 flex flex-col justify-between items-start gap-5 text-center rounded-3xl transition ease-out p-5 hover:scale-105 hover:shadow-xl hover:bg-white" dir='rtl'>
                      <div className='w-full p-5 bg-red-500 flex items-center justify-center rounded-xl'>
@@ -317,84 +377,6 @@ export default function Home() {
                      </div>
                   </div>
                </div>
-
-            </div>
-
-
-         </div>
-
-
-         <div className="z-2 w-full min-h-dvh flex justify-end items-end">
-            <div className="w-full min-h-screen flex flex-col justify-center items-center gap-10">
-
-               <div className="w-full h-fit flex flex-wrap justify-evenly gap-5">
-                  <div className="w-full text-white tracking-widest text-2xl text-center font-(family-name:--vazirt)">دوره های عمومی</div>
-
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-(family-name:--font-comforta) bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">teenagers</div>
-                     </div>
-                  </div>
-
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">private</div>
-                     </div>
-                  </div>
-
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">CIPLE</div>
-                     </div>
-                  </div>
-
-               </div>
-
-               <div className="w-full h-fit flex flex-wrap justify-evenly">
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">KIDS</div>
-                     </div>
-                  </div>
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TEENS</div>
-                     </div>
-                  </div>
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">ADULT</div>
-                     </div>
-                  </div>
-               </div>
-
-               <div className="w-full h-fit flex flex-wrap justify-evenly">
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">CELTA</div>
-                     </div>
-                  </div>
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TTC</div>
-                     </div>
-                  </div>
-                  <div className="group overflow-hidden rounded-xl cursor-pointer w-100 h-20 flex flex-col justify-between items-center active:scale-98">
-                     <div className="relative w-full h-full flex justify-center items-end">
-                        <div className="w-full h-full relative top-13 transition-top duration-300 ease-in-out group-hover:top-0 rounded-xl bg-white/20 group-hover:bg-gray-100"></div>
-                        <div className="absolute text-white text-5xl font-[family-name:var(--font-comforta),cursive] bottom-0 transition-bottom duration-300 ease-in-out group-hover:bottom-3 group-hover:scale-120 group-hover:text-[#ff85eb]">TESOL</div>
-                     </div>
-                  </div>
-               </div>
-
             </div>
          </div>
 

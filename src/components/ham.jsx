@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 
-function Ham(){
+function Ham({ isScrolled = false, isVisible = true }){
    
    const [open, setOpen] = useState(false)
    
@@ -53,7 +53,7 @@ function Ham(){
 
 
    return(
-      <div className={`w-full fixed top-0 left-0 p-2 flex flex-col justify-between items-start transition-all ease-in-out ${open ? 'backdrop-blur-xs bg-white/20 h-dvh' : ''}`}
+      <div className={`w-full fixed top-0 left-0 p-2 flex flex-col justify-between items-start transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled && !open ? 'bg-white shadow-sm' : ''} ${open ? 'backdrop-blur-xs bg-white/20 h-dvh' : ''}`}
          onClick={(e) => {
             setOpen(false)
          }}
@@ -83,13 +83,13 @@ function Ham(){
                <div className="w-9 h-10 cursor-pointer flex flex-col items-center justify-center" >
                   <input className="hidden peer" type="checkbox" checked={open} onChange={(e) => setOpen(e.target.checked)}/>
                   <div
-                     className="w-[50%] h-0.5 bg-white rounded-sm transition-all duration-300 origin-left translate-y-[0.45rem] peer-checked:-rotate-45 peer-checked:bg-black"
+                     className={`w-[50%] h-0.5 rounded-sm transition-all duration-300 origin-left translate-y-[0.45rem] peer-checked:-rotate-45 peer-checked:bg-black ${isScrolled ? 'bg-black' : 'bg-white'}`}
                   ></div>
                   <div
-                     className="w-[50%] h-0.5 bg-white rounded-md transition-all duration-300 origin-center peer-checked:hidden peer-checked:bg-black"
+                     className={`w-[50%] h-0.5 rounded-md transition-all duration-300 origin-center peer-checked:hidden peer-checked:bg-black ${isScrolled ? 'bg-black' : 'bg-white'}`}
                   ></div>
                   <div
-                     className="w-[50%] h-0.5 bg-white rounded-md transition-all duration-300 origin-left -translate-y-[0.45rem] peer-checked:rotate-45 peer-checked:bg-black"
+                     className={`w-[50%] h-0.5 rounded-md transition-all duration-300 origin-left -translate-y-[0.45rem] peer-checked:rotate-45 peer-checked:bg-black ${isScrolled ? 'bg-black' : 'bg-white'}`}
                   ></div>
                </div>
             </label>
