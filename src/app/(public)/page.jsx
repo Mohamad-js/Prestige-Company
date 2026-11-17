@@ -82,7 +82,6 @@ export default function Home() {
                <div className='relative z-20 w-full h-full min-h-0 flex justify-center items-start'>
                   <AccordionOS
                      className="accordion-os-fullscreen"
-                     overlayText="GHAZAL"
                      containerWidth="100%"
                      containerHeight="83.333svh"
                      autoPlayInterval={5000}

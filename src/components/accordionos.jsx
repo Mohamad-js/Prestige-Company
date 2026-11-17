@@ -110,11 +110,11 @@ const DEFAULT_ITEMS = [
   },
   {
     id: 2,
-    title: "زبان مشاغل",
+    title: "آمادگی سفر",
     badge: "02",
     claim:
-      "کلاس های آموزش تخصصی زبان برمبنای واژگان و اصطلاحات مورد نیاز در شفل شما",
-    image: "/pics/slider/exam.png",
+      "کلاس های آموزش زبان ویژه ی سفرهای تفریحی و کاری شما",
+    image: "/pics/slider/trip.png",
     alt: "Job Language Courses Image",
   },
   {
@@ -122,8 +122,8 @@ const DEFAULT_ITEMS = [
     title: "آمادگی مهاجرت",
     badge: "03",
     claim:
-      "دوره های ویژه ی آمادگی و تسلط نسبی به زبان برای سفر و یا مهاجرت",
-    image: "/pics/slider/exam.png",
+      "دوره های آموزش زبان های خارجه ویژه ی آمادگی برای مهاجرت",
+    image: "/pics/slider/emigration.png",
     alt: "Trip & Emigration Courses Image",
   },
   {
@@ -131,8 +131,8 @@ const DEFAULT_ITEMS = [
     title: "تنوع زبانی",
     badge: "04",
     claim:
-      "کلاس های گروهی و خصوصی برای بیش از دوازده زبان زنده ی دنیا",
-    image: "/pics/slider/exam.png",
+      "کلاس های گروهی و خصوصی برای دوازده زبان مناسب نوجوانان و بزرگسالان",
+    image: "/pics/slider/language.png",
     alt: "Language Variety Image",
   },
   {
@@ -141,7 +141,7 @@ const DEFAULT_ITEMS = [
     badge: "05",
     claim:
       "برگزاری دوره های ویژه ی تربیت مدرس TTC و روانشناسی آموزش با تمرکز بر متدهای CLT، TBLT و CLIL",
-    image: "/pics/slider/exam.png",
+    image: "/pics/slider/ttc.jpg",
     alt: "TTC Course Image",
   },
 ];
@@ -492,7 +492,22 @@ export function AccordionOS({
             );
           })}
 
-          <div aria-hidden className="accordion-os-image-overlay" />
+          <div className="accordion-os-slide-dots" role="group" aria-label="Choose slide">
+            {items.map((item, index) => (
+              <button
+                key={item.id ?? index}
+                type="button"
+                aria-label={`Show slide ${index + 1}`}
+                aria-current={activeIndex === index ? "true" : undefined}
+                onClick={() => {
+                  setActiveIndex(index);
+                  onItemChange?.(index);
+                }}
+                className={`accordion-os-slide-dot${activeIndex === index ? " accordion-os-slide-dot-active" : ""}`}
+              />
+            ))}
+          </div>
+
           {overlayText && (
             <div
               className="accordion-os-overlay-text"
@@ -771,12 +786,41 @@ export function AccordionOS({
             will-change: opacity, transform;
           }
 
-          .accordion-os-image-overlay {
+          .accordion-os-slide-dots {
             position: absolute;
-            inset: 0;
-            z-index: 4;
-            background: rgba(0, 0, 0, 0.5);
-            pointer-events: none;
+            z-index: 6;
+            left: 50%;
+            bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transform: translateX(-50%);
+            pointer-events: auto;
+          }
+
+          .accordion-os-slide-dot {
+            width: 7px;
+            height: 7px;
+            padding: 0;
+            border: 0;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.55);
+            cursor: pointer;
+            transition: background-color 180ms ease, transform 180ms ease;
+          }
+
+          .accordion-os-slide-dot:hover {
+            transform: scale(1.2);
+          }
+
+          .accordion-os-slide-dot-active {
+            background: #fff;
+          }
+
+          .accordion-os-slide-dot:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
           }
 
           .accordion-os-overlay-text {

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import Ham from './ham'
+import { TextHoverEffect } from '@/components/velora/text-hover-effect'
 
 // Keep submenu content beside its parent. Adding a section is now only a data change.
 const navItems = [
@@ -348,6 +349,34 @@ const megaMenus = {
    },
 }
 
+function BrandWordmark() {
+   const [isHovered, setIsHovered] = useState(false)
+   const [pointerPosition, setPointerPosition] = useState(null)
+
+   return (
+      <span
+         className="flex flex-col items-center justify-center"
+         onPointerEnter={() => setIsHovered(true)}
+         onPointerLeave={() => setIsHovered(false)}
+         onPointerMove={(event) => {
+            const bounds = event.currentTarget.getBoundingClientRect()
+            setPointerPosition({
+               x: ((event.clientX - bounds.left) / bounds.width) * 100,
+               y: ((event.clientY - bounds.top) / bounds.height) * 100,
+            })
+         }}
+      >
+         <TextHoverEffect
+            text="GHAZAL"
+            active={isHovered}
+            pointerPosition={pointerPosition}
+            drawDuration={4}
+            className="h-7 w-32 [--foreground:currentColor] [--brand-from:currentColor] [--brand-via:currentColor] [--brand-to:currentColor]"
+         />
+      </span>
+   )
+}
+
 function Navbar() {
    const pathname = usePathname()
    const router = useRouter()
@@ -473,7 +502,7 @@ function Navbar() {
             </div>
 
             <div className="flex w-30 h-full items-center justify-between">
-               <Link href="/" className="">
+               <Link href="/" className="flex items-center gap-2" aria-label="Ghazal Center home">
                   <span className="relative block size-7 overflow-hidden">
                      <Image
                         className="object-contain"
@@ -483,6 +512,7 @@ function Navbar() {
                         sizes="40px"
                      />
                   </span>
+                  <BrandWordmark />
                </Link>
 
                {/*<button*/}
@@ -603,10 +633,11 @@ function Navbar() {
 
          <div className={`invisible top-0 left-0 z-3 flex min-w-full justify-between transition-transform duration-300 ease-out max-[1070px]:visible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <Ham isScrolled={isScrolled} isVisible={isVisible} />
-            <Link href="/" className="absolute right-3 top-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current">
+            <Link href="/" className="absolute right-3 top-3 flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current" aria-label="Ghazal Center home">
                <span className="relative block size-10 overflow-hidden">
                   <Image className="object-contain" src="/OurLogo.png" alt="Ghazal Center" fill sizes="40px" />
                </span>
+               <BrandWordmark />
             </Link>
          </div>
       </header>
