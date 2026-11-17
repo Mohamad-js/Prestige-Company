@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
@@ -386,6 +387,7 @@ function Navbar() {
    const [openMenuId, setOpenMenuId] = useState(null)
    const [isScrolled, setIsScrolled] = useState(false)
    const [isVisible, setIsVisible] = useState(true)
+   const closeTimer = useRef(null)
 
    useEffect(() => {
       const updateScrollState = () => {
@@ -409,7 +411,25 @@ function Navbar() {
       return () => window.removeEventListener('scroll', updateScrollState)
    }, [])
 
-   const closeMenu = () => setOpenMenuId(null)
+   const cancelScheduledClose = () => {
+      if (closeTimer.current) {
+         clearTimeout(closeTimer.current)
+         closeTimer.current = null
+      }
+   }
+
+   const closeMenu = () => {
+      cancelScheduledClose()
+      setOpenMenuId(null)
+   }
+
+   const scheduleMenuClose = () => {
+      cancelScheduledClose()
+      closeTimer.current = setTimeout(() => {
+         closeTimer.current = null
+         setOpenMenuId(null)
+      }, 180)
+   }
 
    useEffect(() => {
       const closeOnOutsidePointer = (event) => {
@@ -426,6 +446,7 @@ function Navbar() {
       return () => {
          document.removeEventListener('pointerdown', closeOnOutsidePointer)
          document.removeEventListener('keydown', closeOnEscape)
+         cancelScheduledClose()
       }
    }, [])
 
@@ -438,101 +459,122 @@ function Navbar() {
       <header
          ref={headerRef}
          className="fixed top-0 z-50 flex min-w-full justify-center"
-         onMouseLeave={closeMenu}
+         onMouseLeave={scheduleMenuClose}
          onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) closeMenu()
          }}
       >
          <nav
             aria-label="Primary navigation"
-            className={`absolute top-0 z-50 flex h-15 w-full flex-row-reverse items-end justify-between gap-x-15 border-0 px-10 transition-all duration-300 ease-out max-[1070px]:invisible ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'bg-white text-black shadow-sm' : 'bg-transparent text-white'}`}
-            onMouseEnter={closeMenu}
+            className={`absolute top-0 p-10 z-50 flex h-15 w-full justify-center items-center gap-x-15 border-0 px-10 transition-all duration-300 ease-out max-[1070px]:invisible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+            onMouseEnter={cancelScheduledClose}
          >
-            <div className="flex items-center" dir={language === 'fa' ? 'rtl' : 'ltr'}>
-               {navItems.map((item) => {
-                  const hasSubmenu = Boolean(megaMenus[item.id])
-                  const isOpen = openMenuId === item.id
-                  const currentItem = isCurrent(item)
+            <div className={`w-full flex justify-between flex-row-reverse items-center py-1 px-2 rounded-3xl ${isScrolled ? 'bg-white text-black shadow-sm' : 'bg-black/10 backdrop-blur-xs border  border-white/30 text-white'}`}>
+               <div className="flex items-center" dir={language === 'fa' ? 'rtl' : 'ltr'}>
+                  {navItems.map((item) => {
+                     const hasSubmenu = Boolean(megaMenus[item.id])
+                     const isOpen = openMenuId === item.id
+                     const currentItem = isCurrent(item)
 
-                  return (
-                     <div
-                        key={item.id}
-                        className="group relative"
-                        onMouseEnter={() => hasSubmenu ? setOpenMenuId(item.id) : closeMenu()}
-                        onFocusCapture={() => hasSubmenu ? setOpenMenuId(item.id) : closeMenu()}
-                     >
-                        <div className="flex items-center justify-end">
-                           <Link
-                              href={item.url}
-                              className={`relative isolate px-3 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''} ${currentItem ? 'font-(family-name:--vazirb)' : ''}`}
-                              aria-current={currentItem ? 'page' : undefined}
-                              onClick={closeMenu}
-                           >
-                              <div className='flex items-center gap-1'>
-                                 {label(item)}
+                     return (
+                        <div
+                           key={item.id}
+                           className="group relative"
+                           onMouseEnter={() => hasSubmenu ? setOpenMenuId(item.id) : closeMenu()}
+                           onFocusCapture={() => hasSubmenu ? setOpenMenuId(item.id) : closeMenu()}
+                        >
+                           <div className="flex items-center justify-end">
+                              <Link
+                                 href={item.url}
+                                 className={`relative isolate px-3 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''} ${currentItem ? 'font-(family-name:--vazirb)' : ''}`}
+                                 aria-current={currentItem ? 'page' : undefined}
+                                 onClick={closeMenu}
+                              >
+                                 <div className='flex items-center gap-1'>
+                                    {label(item)}
+
+                                    {
+                                       hasSubmenu && (
+                                       <ChevronDown aria-hidden="true" size={14} className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'} />
+                                    )}
+                                 </div>
+
+                                 {currentItem && (
+                                    <span
+                                       aria-hidden="true"
+                                       className="absolute inset-1 -z-10 rounded-2xl bg-black/5"
+                                    />
+                                 )}
 
                                  {
-                                    hasSubmenu && (
-                                    <ChevronDown aria-hidden="true" size={14} className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'} />
+                                    !currentItem && (
+                                    <span
+                                       aria-hidden="true"
+                                       className={`absolute inset-x-3 bottom-1 h-0.5 origin-center bg-current transition-transform duration-200 group-hover:scale-x-100 group-focus-within:scale-x-100 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}
+                                    />
                                  )}
-                              </div>
 
-                              {currentItem && (
-                                 <span
-                                    aria-hidden="true"
-                                    className="absolute inset-1 -z-10 rounded-md bg-black/5"
-                                 />
-                              )}
+                              </Link>
 
-                              {
-                                 !currentItem && (
-                                 <span
-                                    aria-hidden="true"
-                                    className={`absolute inset-x-3 bottom-1 h-0.5 origin-center bg-current transition-transform duration-200 group-hover:scale-x-100 group-focus-within:scale-x-100 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}
-                                 />
-                              )}
-
-                           </Link>
+                           </div>
 
                         </div>
+                     )
+                  })}
+               </div>
 
-                     </div>
-                  )
-               })}
-            </div>
+               <div className="flex pl-2 w-30 h-full items-center justify-between">
+                  <Link href="/" className="flex items-center gap-2" aria-label="Ghazal Center home">
+                     <span className="relative block size-7 overflow-hidden">
+                        <Image
+                           className="object-contain"
+                           src="/OurLogo.png"
+                           alt="Humming home"
+                           fill
+                           sizes="40px"
+                        />
+                     </span>
+                     <BrandWordmark />
+                  </Link>
 
-            <div className="flex w-30 h-full items-center justify-between">
-               <Link href="/" className="flex items-center gap-2" aria-label="Ghazal Center home">
-                  <span className="relative block size-7 overflow-hidden">
-                     <Image
-                        className="object-contain"
-                        src="/OurLogo.png"
-                        alt="Humming home"
-                        fill
-                        sizes="40px"
-                     />
-                  </span>
-                  <BrandWordmark />
-               </Link>
-
-               {/*<button*/}
-               {/*   type="button"*/}
-               {/*   className={`ml-2 flex size-6 cursor-pointer items-center justify-center rounded bg-gray-100 p-1 text-xs font-semibold text-gray-400 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''}`}*/}
-               {/*   onClick={navigate}*/}
-               {/*   aria-label="Change language"*/}
-               {/*>*/}
-               {/*   {language === 'fa' ? 'EN' : 'فا'}*/}
-               {/*</button>*/}
+                  {/*<button*/}
+                  {/*   type="button"*/}
+                  {/*   className={`ml-2 flex size-6 cursor-pointer items-center justify-center rounded bg-gray-100 p-1 text-xs font-semibold text-gray-400 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''}`}*/}
+                  {/*   onClick={navigate}*/}
+                  {/*   aria-label="Change language"*/}
+                  {/*>*/}
+                  {/*   {language === 'fa' ? 'EN' : 'فا'}*/}
+                  {/*</button>*/}
+               </div>
             </div>
          </nav>
 
-         {
-            openMegaMenu && (
-            <div id={`${openItem.id}-submenu`} className="fixed inset-0 z-40 hidden min-[1071px]:block" aria-label={`${label(openItem)} submenu`}>
-               <div className="absolute inset-0 bg-black/80" onMouseEnter={closeMenu} onClick={closeMenu} />
-               <section
-                  className="absolute inset-x-0 top-15 overflow-y-auto bg-white text-black shadow-2xl backdrop-blur-xl"
+         <AnimatePresence>
+            {openMegaMenu && (
+            <motion.div
+               key={openItem.id}
+               id={`${openItem.id}-submenu`}
+               className="fixed inset-0 z-40 hidden min-[1071px]:block"
+               aria-label={`${label(openItem)} submenu`}
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               transition={{ duration: 0.12 }}
+            >
+               <div
+                  className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"
+                  onMouseEnter={(event) => event.clientY < 80 ? scheduleMenuClose() : closeMenu()}
+                  onClick={closeMenu}
+               />
+               <motion.section
+                  className="absolute inset-x-10 top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-3xl border border-white/30 bg-white text-black shadow-2xl backdrop-blur-xl"
+                  onMouseEnter={cancelScheduledClose}
                   onClick={(event) => event.stopPropagation()}
+                  initial={{ opacity: 0, scaleX: 0.86, scaleY: 0.82 }}
+                  animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
+                  exit={{ opacity: 0, scaleX: 0.96, scaleY: 0.94 }}
+                  transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ transformOrigin: 'top right' }}
                >
 
                   <div className={`flex items-stretch gap-10 px-10 py-12 ${openMegaMenu.imgPosition === 'Right' && 'flex-row-reverse'} ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''}`} dir={language === 'fa' && openItem.id !== 'books' ? 'rtl' : 'ltr'}>
@@ -601,7 +643,7 @@ function Navbar() {
                            openMegaMenu.imgName &&
 
                               openMegaMenu.imgSize === 'Vertical' ?
-                                 <div className='relative shrink-0 w-50 self-stretch border'>
+                                 <div className='relative shrink-0 w-50 self-stretch overflow-hidden rounded-3xl border'>
                                     <Image
                                        className='object-cover'
                                        src={`/pics/navbar/${openMegaMenu.imgName}`}
@@ -613,7 +655,7 @@ function Navbar() {
                               :
 
                               openMegaMenu.imgSize === 'Square' ?
-                                 <div className='relative shrink-0 w-100 self-stretch border'>
+                                 <div className='relative shrink-0 w-100 self-stretch overflow-hidden rounded-3xl border'>
                                     <Image
                                        className='object-cover'
                                        src={`/pics/navbar/${openMegaMenu.imgName}`}
@@ -627,9 +669,10 @@ function Navbar() {
                               <div className='text-red-500'>Unsupported Image Size</div>
                         }
                      </div>
-               </section>
-            </div>
-         )}
+               </motion.section>
+            </motion.div>
+            )}
+         </AnimatePresence>
 
          <div className={`invisible top-0 left-0 z-3 flex min-w-full justify-between transition-transform duration-300 ease-out max-[1070px]:visible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <Ham isScrolled={isScrolled} isVisible={isVisible} />
