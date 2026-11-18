@@ -104,7 +104,7 @@ const DEFAULT_ITEMS = [
     title: "آمادگی آزمون",
     badge: "01",
     claim:
-      "کلاس های آمادگی برای آزمون های بین المللی با تنوع زمانی و اساتید مجرب",
+      "کلاس های آمادگی برای تمامی آزمون های بین المللی",
     image: "/pics/slider/exam.png",
     alt: "Exam Preparation Courses Image",
   },
@@ -122,7 +122,7 @@ const DEFAULT_ITEMS = [
     title: "آمادگی مهاجرت",
     badge: "03",
     claim:
-      "دوره های آموزش زبان های خارجه ویژه ی آمادگی برای مهاجرت",
+      "دوره های آموزش زبان ویژه ی آمادگی برای مهاجرت",
     image: "/pics/slider/emigration.png",
     alt: "Trip & Emigration Courses Image",
   },
@@ -131,7 +131,7 @@ const DEFAULT_ITEMS = [
     title: "تنوع زبانی",
     badge: "04",
     claim:
-      "کلاس های گروهی و خصوصی برای دوازده زبان مناسب نوجوانان و بزرگسالان",
+      "کلاس های گروهی و خصوصی برای نوجوانان و بزرگسالان",
     image: "/pics/slider/language.png",
     alt: "Language Variety Image",
   },
@@ -140,7 +140,7 @@ const DEFAULT_ITEMS = [
     title: "تربیت مدرس",
     badge: "05",
     claim:
-      "برگزاری دوره های ویژه ی تربیت مدرس TTC و روانشناسی آموزش با تمرکز بر متدهای CLT، TBLT و CLIL",
+      "دوره های تربیت مدرس و آموزش روانشناسی آموزش",
     image: "/pics/slider/ttc.jpg",
     alt: "TTC Course Image",
   },
@@ -153,12 +153,6 @@ const springPhysics = {
   stiffness: 340,
   damping: 28,
   mass: 0.8,
-};
-
-const bouncySpring = {
-  type: "spring",
-  stiffness: 400,
-  damping: 22,
 };
 
 export function AccordionOS({
@@ -175,21 +169,15 @@ export function AccordionOS({
   onItemChange
 }) {
   const [activeIndex, setActiveIndex] = useState(defaultActiveIndex);
+  const [slideDirection, setSlideDirection] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   const [isBrandHovered, setIsBrandHovered] = useState(false);
   const [brandPointer, setBrandPointer] = useState({ x: 50, y: 50 });
   const [progress, setProgress] = useState(0);
   const elapsedRef = React.useRef(0);
 
-  const handleToggle = useCallback((index) => {
-    setActiveIndex((prev) => {
-      const next = prev === index ? null : index;
-      onItemChange?.(next);
-      return next;
-    });
-  }, [onItemChange]);
-
   const handlePrev = useCallback(() => {
+    setSlideDirection(-1);
     setActiveIndex((prev) => {
       if (prev === null) return 0;
       const next = prev > 0 ? prev - 1 : items.length - 1;
@@ -199,6 +187,7 @@ export function AccordionOS({
   }, [items.length, onItemChange]);
 
   const handleNext = useCallback(() => {
+    setSlideDirection(1);
     setActiveIndex((prev) => {
       if (prev === null) return 0;
       const next = prev < items.length - 1 ? prev + 1 : 0;
@@ -212,7 +201,7 @@ export function AccordionOS({
     setProgress(0);
   }, [activeIndex]);
 
-  // Autoplay and its progress indicator share one timer so hovering pauses both.
+  // Autoplay and its progress line share one timer so hovering pauses both.
   useEffect(() => {
     if (!autoPlay || activeIndex === null || (pauseOnHover && isHovered)) return;
 
@@ -258,6 +247,7 @@ export function AccordionOS({
         const num = parseInt(e.key, 10) - 1;
         if (num < items.length) {
           e.preventDefault();
+          setSlideDirection(num >= (activeIndex ?? 0) ? 1 : -1);
           setActiveIndex(num);
           onItemChange?.(num);
         }
@@ -266,7 +256,7 @@ export function AccordionOS({
 
     window.addEventListener("keydown", handleGlobalKeyDown);
     return () => window.removeEventListener("keydown", handleGlobalKeyDown);
-  }, [handleNext, handlePrev, items.length, onItemChange]);
+  }, [activeIndex, handleNext, handlePrev, items.length, onItemChange]);
 
   return (
     <div
@@ -285,169 +275,6 @@ export function AccordionOS({
         initial={{ opacity: 0, scale: 0.96, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
-        {/* Left Interactive Column */}
-        <div className="accordion-os-sidebar">
-          {/* Accordion Items */}
-          <div className="accordion-os-items-stack">
-            {items.map((item, index) => {
-              const isOpen = activeIndex === index;
-              return (
-                <motion.div
-                  key={item.id ?? index}
-                  layout="position"
-                  transition={{
-                    default: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                    layout: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                  }}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  onClick={() => handleToggle(index)}
-                  tabIndex={0}
-                  role="button"
-                  aria-expanded={isOpen}
-                  whileHover={{ scale: isOpen ? 1.01 : 1.03, x: 3 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`accordion-os-pill ${isOpen ? "accordion-os-pill-open" : "accordion-os-pill-closed"}`}>
-                  <div className="accordion-os-title-stack">
-                    <motion.div
-                      className="accordion-os-icon-btn"
-                      animate={{
-                        backgroundColor: isOpen ? "rgba(2, 2, 2, 0.9)" : "rgba(255, 255, 255, 0.8)",
-                        color: isOpen ? "#ffffff" : "rgb(2, 2, 2)",
-                        borderColor: isOpen ? "rgba(0, 0, 0, 0.8)" : "rgba(2, 2, 2, 0.2)",
-                      }}
-                      whileHover={{ scale: 1.15, rotate: isOpen ? -45 : 90 }}
-                      whileTap={{ scale: 0.9 }}
-                      transition={bouncySpring}>
-                      <motion.svg
-                        viewBox="0 0 24 24"
-                        className="accordion-os-svg-icon"
-                        animate={{ rotate: isOpen ? 180 : 0 }}
-                        transition={bouncySpring}>
-                        <path
-                          d="m6 9 6 6 6-6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round" />
-                      </motion.svg>
-                    </motion.div>
-
-                    <div className="accordion-os-title-wrapper">
-                      <span className="accordion-os-title-text">{item.title}</span>
-                      {isOpen && item.badge ? (
-                        <span className="accordion-os-pill-badge accordion-os-pill-badge-active">
-                          {item.badge}
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="claim-content"
-                        initial={{ opacity: 0, height: 0, marginTop: 0, filter: "blur(4px)" }}
-                        animate={{
-                          opacity: 1,
-                          height: "auto",
-                          marginTop: 12,
-                          filter: "blur(0px)",
-                          transition: {
-                            height: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                            opacity: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                            filter: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                          },
-                        }}
-                        exit={{
-                          opacity: 0,
-                          height: 0,
-                          marginTop: 0,
-                          filter: "blur(4px)",
-                          transition: {
-                            height: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                            opacity: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                          },
-                        }}
-                        className="accordion-os-claim-container">
-                        <motion.p
-                          initial={{ y: 8 }}
-                          animate={{ y: 0 }}
-                          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                          className="accordion-os-claim-text">
-                          {item.claim}
-                        </motion.p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                  {isOpen && (
-                    <div aria-hidden className="accordion-os-progress-track">
-                      <motion.div
-                        style={{ transform: `scaleX(${progress / 100})` }}
-                        className="accordion-os-progress-fill"
-                      />
-                    </div>
-                  )}
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Bottom Floating Navigation Deck */}
-          <div className="accordion-os-bottom-deck">
-            <AnimatePresence>
-              {activeIndex !== null && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 15, scale: 0.9 }}
-                  transition={bouncySpring}
-                  className="accordion-os-nav-stack">
-                  <button
-                    type="button"
-                    onClick={handlePrev}
-                    aria-label="Previous (Up Arrow)"
-                    className="accordion-os-nav-btn">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="accordion-os-nav-svg">
-                      <polyline points="18 15 12 9 6 15" />
-                    </svg>
-                  </button>
-
-                  <div className="accordion-os-counter">
-                    <span>{String((activeIndex ?? 0) + 1).padStart(2, "0")}</span>
-                    <span className="accordion-os-counter-divider">/</span>
-                    <span>{String(items.length).padStart(2, "0")}</span>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={handleNext}
-                    aria-label="Next (Down Arrow)"
-                    className="accordion-os-nav-btn">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="accordion-os-nav-svg">
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
         {/* Persistent Pre-Decoded Instant GPU Layers */}
         <div className="accordion-os-visual-wrapper">
           {/* Static Default Image */}
@@ -457,9 +284,10 @@ export function AccordionOS({
             animate={{
               opacity: activeIndex === null ? 1 : 0,
               scale: activeIndex === null ? 1 : 1.05,
+              x: activeIndex === null ? 0 : slideDirection > 0 ? -24 : 24,
               zIndex: activeIndex === null ? 2 : 1,
             }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}>
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
             <img
               src={staticImage}
               alt="Handmade ceramic vessels on a studio shelf"
@@ -479,9 +307,10 @@ export function AccordionOS({
                 animate={{
                   opacity: isActive ? 1 : 0,
                   scale: isActive ? 1 : 1.05,
+                  x: isActive ? 0 : slideDirection > 0 ? -24 : 24,
                   zIndex: isActive ? 3 : 1,
                 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}>
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
                 <img
                   src={item.image}
                   alt={item.alt || item.title}
@@ -492,6 +321,8 @@ export function AccordionOS({
             );
           })}
 
+          <div className="accordion-os-bottom-shade" aria-hidden="true" />
+
           <div className="accordion-os-slide-dots" role="group" aria-label="Choose slide">
             {items.map((item, index) => (
               <button
@@ -500,12 +331,58 @@ export function AccordionOS({
                 aria-label={`Show slide ${index + 1}`}
                 aria-current={activeIndex === index ? "true" : undefined}
                 onClick={() => {
+                  setSlideDirection(index >= (activeIndex ?? 0) ? 1 : -1);
                   setActiveIndex(index);
                   onItemChange?.(index);
                 }}
                 className={`accordion-os-slide-dot${activeIndex === index ? " accordion-os-slide-dot-active" : ""}`}
               />
             ))}
+          </div>
+
+          <div
+            className="accordion-os-slide-copy"
+            style={{ "--slide-progress": progress / 100 }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            aria-live="polite">
+            <AnimatePresence mode="wait" initial={false}>
+              {activeIndex !== null && items[activeIndex] && (
+                <motion.div
+                  key={items[activeIndex].id ?? activeIndex}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 18 }}
+                  transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                  className="accordion-os-slide-copy-inner">
+                  <motion.h2
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 18 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="accordion-os-slide-title">
+                    {items[activeIndex].title}
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 18 }}
+                    transition={{ duration: 0.3, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className="accordion-os-slide-claim">
+                    {items[activeIndex].claim}
+                  </motion.p>
+                  <motion.a
+                    href="#special-courses"
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 18 }}
+                    transition={{ duration: 0.3, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+                    className="accordion-os-slide-cta">
+                    مشاهده دوره‌ها
+                  </motion.a>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {overlayText && (
@@ -786,6 +663,103 @@ export function AccordionOS({
             will-change: opacity, transform;
           }
 
+          .accordion-os-slide-copy {
+            position: absolute;
+            z-index: 6;
+            right: 48px;
+            bottom: 24px;
+            width: min(440px, calc(100% - 40px));
+            min-height: 150px;
+            overflow: hidden;
+            direction: rtl;
+            text-align: right;
+            pointer-events: auto;
+          }
+
+          .accordion-os-slide-copy::before {
+            content: "";
+            position: absolute;
+            top: 28px;
+            right: 0;
+            bottom: 28px;
+            width: 2px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.32);
+            pointer-events: none;
+          }
+
+          .accordion-os-slide-copy::after {
+            content: "";
+            position: absolute;
+            top: 28px;
+            right: 0;
+            bottom: 28px;
+            width: 2px;
+            border-radius: 2px;
+            background: #fff;
+            transform: scaleY(var(--slide-progress, 0));
+            transform-origin: top center;
+            pointer-events: none;
+          }
+
+          .accordion-os-slide-copy-inner {
+            display: flex;
+            min-height: 150px;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px 26px 28px 0;
+          }
+
+          .accordion-os-slide-title {
+            margin: 0 0 8px;
+            color: #fff;
+            font-family: var(--vazirb), sans-serif;
+            font-size: clamp(22px, 3vw, 34px);
+            font-weight: 700;
+            line-height: 1.3;
+          }
+
+          .accordion-os-slide-claim {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.96);
+            font-family: var(--vazirt), sans-serif;
+            font-size: clamp(14px, 1.5vw, 18px);
+            line-height: 1.8;
+          }
+
+          .accordion-os-slide-cta {
+            align-self: flex-start;
+            margin-top: 14px;
+            padding: 9px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.82);
+            border-radius: 999px;
+            color: #fff;
+            font-family: var(--vazirt), sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            text-decoration: none;
+            transition: background-color 180ms ease, color 180ms ease;
+          }
+
+          .accordion-os-slide-cta:hover {
+            background: rgba(255, 255, 255, 0.94);
+            color: #111;
+          }
+
+          .accordion-os-slide-cta:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+          }
+
+          .accordion-os-bottom-shade {
+            position: absolute;
+            inset: auto 0 0;
+            z-index: 4;
+            height: clamp(220px, 48%, 420px);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.34) 42%, transparent 100%);
+            pointer-events: none;
+          }
+
           .accordion-os-slide-dots {
             position: absolute;
             z-index: 6;
@@ -892,6 +866,12 @@ export function AccordionOS({
             .accordion-os-image {
               border-radius: 24px;
             }
+
+            .accordion-os-slide-copy {
+              right: 12px;
+              bottom: 12px;
+              width: calc(100% - 24px);
+            }
           }
 
           @container (max-width: 420px) {
@@ -907,6 +887,12 @@ export function AccordionOS({
 
             .accordion-os-image {
               border-radius: 20px;
+            }
+
+            .accordion-os-slide-copy {
+              right: 12px;
+              bottom: 12px;
+              width: calc(100% - 24px);
             }
           }
 

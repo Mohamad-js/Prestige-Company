@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
@@ -356,7 +355,7 @@ function BrandWordmark() {
 
    return (
       <span
-         className="flex flex-col items-center justify-center"
+         className={`flex flex-col items-center justify-center ${isHovered ? 'text-white' : ''}`}
          onPointerEnter={() => setIsHovered(true)}
          onPointerLeave={() => setIsHovered(false)}
          onPointerMove={(event) => {
@@ -469,7 +468,7 @@ function Navbar() {
             className={`absolute top-0 p-10 z-50 flex h-15 w-full justify-center items-center gap-x-15 border-0 px-10 transition-all duration-300 ease-out max-[1070px]:invisible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
             onMouseEnter={cancelScheduledClose}
          >
-            <div className={`w-full flex justify-between flex-row-reverse items-center py-1 px-2 rounded-3xl ${isScrolled ? 'bg-white text-black shadow-sm' : 'bg-black/10 backdrop-blur-xs border  border-white/30 text-white'}`}>
+            <div className={`w-full flex justify-between flex-row-reverse items-center py-1 px-2 rounded-3xl ${isScrolled ? 'bg-white text-black shadow-sm' : 'bg-white/50 backdrop-blur-xs border  border-white/30 text-black'}`}>
                <div className="flex items-center" dir={language === 'fa' ? 'rtl' : 'ltr'}>
                   {navItems.map((item) => {
                      const hasSubmenu = Boolean(megaMenus[item.id])
@@ -502,7 +501,7 @@ function Navbar() {
                                  {currentItem && (
                                     <span
                                        aria-hidden="true"
-                                       className="absolute inset-1 -z-10 rounded-2xl bg-black/5"
+                                       className="absolute inset-1 -z-10 rounded-2xl bg-white/70"
                                     />
                                  )}
 
@@ -534,7 +533,6 @@ function Navbar() {
                            sizes="40px"
                         />
                      </span>
-                     <BrandWordmark />
                   </Link>
 
                   {/*<button*/}
@@ -549,32 +547,21 @@ function Navbar() {
             </div>
          </nav>
 
-         <AnimatePresence>
-            {openMegaMenu && (
-            <motion.div
-               key={openItem.id}
+         {openMegaMenu && (
+            <div
                id={`${openItem.id}-submenu`}
                className="fixed inset-0 z-40 hidden min-[1071px]:block"
                aria-label={`${label(openItem)} submenu`}
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               exit={{ opacity: 0 }}
-               transition={{ duration: 0.12 }}
             >
                <div
                   className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"
                   onMouseEnter={(event) => event.clientY < 80 ? scheduleMenuClose() : closeMenu()}
                   onClick={closeMenu}
                />
-               <motion.section
+               <section
                   className="absolute inset-x-10 top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-3xl border border-white/30 bg-white text-black shadow-2xl backdrop-blur-xl"
                   onMouseEnter={cancelScheduledClose}
                   onClick={(event) => event.stopPropagation()}
-                  initial={{ opacity: 0, scaleX: 0.86, scaleY: 0.82 }}
-                  animate={{ opacity: 1, scaleX: 1, scaleY: 1 }}
-                  exit={{ opacity: 0, scaleX: 0.96, scaleY: 0.94 }}
-                  transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ transformOrigin: 'top right' }}
                >
 
                   <div className={`flex items-stretch gap-10 px-10 py-12 ${openMegaMenu.imgPosition === 'Right' && 'flex-row-reverse'} ${language === 'fa' ? 'font-(family-name:--vazirt)' : ''}`} dir={language === 'fa' && openItem.id !== 'books' ? 'rtl' : 'ltr'}>
@@ -669,10 +656,9 @@ function Navbar() {
                               <div className='text-red-500'>Unsupported Image Size</div>
                         }
                      </div>
-               </motion.section>
-            </motion.div>
-            )}
-         </AnimatePresence>
+               </section>
+            </div>
+         )}
 
          <div className={`invisible top-0 left-0 z-3 flex min-w-full justify-between transition-transform duration-300 ease-out max-[1070px]:visible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <Ham isScrolled={isScrolled} isVisible={isVisible} />

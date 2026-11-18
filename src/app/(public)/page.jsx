@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
 import {AccordionOS} from "@/components/accordionos";
+import { NumberTicker } from "@/components/velora/number-ticker";
 
 
 export default function Home() {
@@ -77,15 +78,33 @@ export default function Home() {
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center overflow-hidden">
          <div className="w-full min-h-dvh flex flex-col justify-center items-center z-2">
 
-            <div className="relative w-full h-svh min-h-svh overflow-hidden flex justify-center items-center">
+            <div className="relative w-full h-svh min-h-svh overflow-hidden flex flex-col justify-start items-center">
 
-               <div className='relative z-20 w-full h-full min-h-0 flex justify-center items-start'>
+               <div className='relative z-20 w-full h-full min-h-0 flex flex-col justify-start items-center'>
                   <AccordionOS
                      className="accordion-os-fullscreen"
                      containerWidth="100%"
                      containerHeight="83.333svh"
                      autoPlayInterval={5000}
                   />
+
+                  <div dir="rtl" className="grid h-[15svh] w-full grid-cols-4 gap-2 px-3 pt-2 sm:gap-3 lg:gap-5 lg:px-12">
+                     {[
+                        { value: 157, title: "زبان آموز" },
+                        { value: 7, title: "کشور" },
+                        { value: 12, title: "سال تجربه" },
+                        { value: 84, title: "دوره آموزشی" },
+                     ].map((stat) => (
+                        <div key={stat.title} className="flex min-h-0 flex-row items-center justify-between gap-1 rounded-2xl border border-black/5 bg-white/90 px-5 py-2 text-right shadow-sm backdrop-blur-sm">
+                           <div className="font-(family-name:--vazirb) text-[clamp(0.65rem,1.2vw,1rem)] leading-tight text-black/55">{stat.title}</div>
+                           <NumberTicker
+                              value={stat.value}
+                              locale="fa-IR"
+                              className="font-(family-name:--vazirt) text-[clamp(1.2rem,4vw,3.5rem)] font-light leading-none text-black"
+                           />
+                        </div>
+                     ))}
+                  </div>
 
 
                   {/*<div className='w-150 flex justify-center items-center flex-col'>*/}
@@ -105,7 +124,7 @@ export default function Home() {
 
             </div>
 
-            <div className="z-2 w-full min-h-dvh flex flex-col justify-start items-end py-3 px-10">
+            <div id="special-courses" className="z-2 w-full min-h-dvh flex flex-col justify-start items-end py-3 px-10">
                <div className="w-full text-black py-3 rounded-3xl tracking-widest text-2xl text-center font-(family-name:--vazirt)">
                   دوره های خاص ما
                </div>
