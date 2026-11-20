@@ -1,6 +1,6 @@
 "use client";;
 import React, { useState, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { TextHoverEffect } from "@/components/velora/text-hover-effect";
 
@@ -102,6 +102,7 @@ const DEFAULT_ITEMS = [
   {
     id: 1,
     title: "آمادگی آزمون",
+    href: "/slider/exam-preparation",
     badge: "01",
     claim:
       "کلاس های آمادگی برای تمامی آزمون های بین المللی",
@@ -111,15 +112,17 @@ const DEFAULT_ITEMS = [
   {
     id: 2,
     title: "آمادگی سفر",
+    href: "/slider/travel-preparation",
     badge: "02",
     claim:
-      "کلاس های آموزش زبان ویژه ی سفرهای تفریحی و کاری شما",
+      "کلاس های آموزش زبان ویژه ی سفرهای تفریحی و کاری",
     image: "/pics/slider/trip.png",
     alt: "Job Language Courses Image",
   },
   {
     id: 3,
     title: "آمادگی مهاجرت",
+    href: "/slider/immigration-preparation",
     badge: "03",
     claim:
       "دوره های آموزش زبان ویژه ی آمادگی برای مهاجرت",
@@ -129,6 +132,7 @@ const DEFAULT_ITEMS = [
   {
     id: 4,
     title: "تنوع زبانی",
+    href: "/slider/language-variety",
     badge: "04",
     claim:
       "کلاس های گروهی و خصوصی برای نوجوانان و بزرگسالان",
@@ -138,6 +142,7 @@ const DEFAULT_ITEMS = [
   {
     id: 5,
     title: "تربیت مدرس",
+    href: "/slider/teacher-training",
     badge: "05",
     claim:
       "دوره های تربیت مدرس و آموزش روانشناسی آموزش",
@@ -165,15 +170,12 @@ export function AccordionOS({
   containerWidth = 1200,
   autoPlay = true,
   autoPlayInterval = 3500,
-  pauseOnHover = true,
   onItemChange
 }) {
   const [activeIndex, setActiveIndex] = useState(defaultActiveIndex);
   const [slideDirection, setSlideDirection] = useState(1);
-  const [isHovered, setIsHovered] = useState(false);
   const [isBrandHovered, setIsBrandHovered] = useState(false);
   const [brandPointer, setBrandPointer] = useState({ x: 50, y: 50 });
-  const [progress, setProgress] = useState(0);
   const elapsedRef = React.useRef(0);
 
   const handlePrev = useCallback(() => {
@@ -198,12 +200,11 @@ export function AccordionOS({
 
   useEffect(() => {
     elapsedRef.current = 0;
-    setProgress(0);
   }, [activeIndex]);
 
-  // Autoplay and its progress line share one timer so hovering pauses both.
+  // Autoplay pauses while the slide content is hovered.
   useEffect(() => {
-    if (!autoPlay || activeIndex === null || (pauseOnHover && isHovered)) return;
+    if (!autoPlay || activeIndex === null) return;
 
     let lastTick = performance.now();
     const timer = setInterval(() => {
@@ -212,18 +213,15 @@ export function AccordionOS({
       lastTick = now;
 
       const nextProgress = Math.min(elapsedRef.current / autoPlayInterval, 1);
-      setProgress(nextProgress * 100);
-
       if (nextProgress >= 1) {
         clearInterval(timer);
         elapsedRef.current = 0;
-        setProgress(0);
         handleNext();
       }
     }, 16);
 
     return () => clearInterval(timer);
-  }, [activeIndex, autoPlay, autoPlayInterval, pauseOnHover, isHovered, handleNext]);
+  }, [activeIndex, autoPlay, autoPlayInterval, handleNext]);
 
   // Global Keyboard Navigation (ArrowUp, ArrowDown, W/S, 1-5, Escape)
   useEffect(() => {
@@ -257,6 +255,8 @@ export function AccordionOS({
     window.addEventListener("keydown", handleGlobalKeyDown);
     return () => window.removeEventListener("keydown", handleGlobalKeyDown);
   }, [activeIndex, handleNext, handlePrev, items.length, onItemChange]);
+
+  const linkedSlide = items[activeIndex ?? 0] || items[0];
 
   return (
     <div
@@ -321,7 +321,22 @@ export function AccordionOS({
             );
           })}
 
-          <div className="accordion-os-bottom-shade" aria-hidden="true" />
+          {linkedSlide && (
+            <a
+              href={linkedSlide.href || "#special-courses"}
+              className="accordion-os-image-link"
+              aria-label={`${linkedSlide.title}${linkedSlide.claim ? `. ${linkedSlide.claim}` : ""}`}
+            >
+              <span className="sr-only">{linkedSlide.title}{linkedSlide.claim ? `: ${linkedSlide.claim}` : ""}</span>
+            </a>
+          )}
+
+          <button type="button" className="accordion-os-side-arrow accordion-os-side-arrow-left" onClick={handlePrev} aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg>
+          </button>
+          <button type="button" className="accordion-os-side-arrow accordion-os-side-arrow-right" onClick={handleNext} aria-label="Next slide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+          </button>
 
           <div className="accordion-os-slide-dots" role="group" aria-label="Choose slide">
             {items.map((item, index) => (
@@ -338,51 +353,6 @@ export function AccordionOS({
                 className={`accordion-os-slide-dot${activeIndex === index ? " accordion-os-slide-dot-active" : ""}`}
               />
             ))}
-          </div>
-
-          <div
-            className="accordion-os-slide-copy"
-            style={{ "--slide-progress": progress / 100 }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            aria-live="polite">
-            <AnimatePresence mode="wait" initial={false}>
-              {activeIndex !== null && items[activeIndex] && (
-                <motion.div
-                  key={items[activeIndex].id ?? activeIndex}
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 18 }}
-                  transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                  className="accordion-os-slide-copy-inner">
-                  <motion.h2
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 18 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="accordion-os-slide-title">
-                    {items[activeIndex].title}
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 18 }}
-                    transition={{ duration: 0.3, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    className="accordion-os-slide-claim">
-                    {items[activeIndex].claim}
-                  </motion.p>
-                  <motion.a
-                    href="#special-courses"
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 18 }}
-                    transition={{ duration: 0.3, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                    className="accordion-os-slide-cta">
-                    مشاهده دوره‌ها
-                  </motion.a>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
           {overlayText && (
@@ -663,6 +633,57 @@ export function AccordionOS({
             will-change: opacity, transform;
           }
 
+          .accordion-os-image-link {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            pointer-events: auto;
+            cursor: pointer;
+          }
+
+          .accordion-os-side-arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 7;
+            display: grid;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255,255,255,.7);
+            border-radius: 999px;
+            background: rgba(0,0,0,.25);
+            color: #fff;
+            pointer-events: auto;
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: background-color 180ms ease, transform 180ms ease;
+          }
+
+          .accordion-os-side-arrow:hover {
+            background: rgba(0,0,0,.5);
+            transform: translateY(-50%) scale(1.06);
+          }
+
+          .accordion-os-side-arrow svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+
+          .accordion-os-side-arrow-left { left: 48px; }
+          .accordion-os-side-arrow-right { right: 48px; }
+
+          .accordion-os-side-arrow:focus-visible,
+          .accordion-os-image-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+          }
+
           .accordion-os-slide-copy {
             position: absolute;
             z-index: 6;
@@ -674,95 +695,87 @@ export function AccordionOS({
             direction: rtl;
             text-align: right;
             pointer-events: auto;
+            border: 1px solid transparent;
+            border-radius: 24px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
           }
 
           .accordion-os-slide-copy::before {
             content: "";
             position: absolute;
-            top: 28px;
-            right: 0;
-            bottom: 28px;
-            width: 2px;
-            border-radius: 2px;
-            background: rgba(255, 255, 255, 0.32);
-            pointer-events: none;
-          }
-
-          .accordion-os-slide-copy::after {
-            content: "";
-            position: absolute;
-            top: 28px;
-            right: 0;
-            bottom: 28px;
-            width: 2px;
-            border-radius: 2px;
-            background: #fff;
-            transform: scaleY(var(--slide-progress, 0));
-            transform-origin: top center;
+            z-index: 0;
+            inset: 0 0 0 auto;
+            width: var(--slide-progress, 0%);
+            border-radius: inherit;
+            background: rgba(0, 0, 0, 0.2);
             pointer-events: none;
           }
 
           .accordion-os-slide-copy-inner {
+            position: relative;
+            z-index: 1;
             display: flex;
-            min-height: 150px;
+            flex: 1;
+            min-height: 0;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: 28px 26px 28px 0;
+            justify-content: center;
+            padding: 16px 8px;
+            text-align: right;
           }
 
           .accordion-os-slide-title {
             margin: 0 0 8px;
             color: #fff;
             font-family: var(--vazirb), sans-serif;
-            font-size: clamp(22px, 3vw, 34px);
+            font-size: clamp(24px, 3vw, 36px);
             font-weight: 700;
             line-height: 1.3;
           }
 
           .accordion-os-slide-claim {
             margin: 0;
-            color: rgba(255, 255, 255, 0.96);
+            color: #fff;
             font-family: var(--vazirt), sans-serif;
-            font-size: clamp(14px, 1.5vw, 18px);
+            font-size: clamp(16px, 1.7vw, 20px);
             line-height: 1.8;
           }
 
           .accordion-os-slide-cta {
-            align-self: flex-start;
-            margin-top: 14px;
+            align-self: stretch;
+            flex-shrink: 0;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 0;
             padding: 9px 18px;
-            border: 1px solid rgba(255, 255, 255, 0.82);
+            border: 1px solid #fff;
             border-radius: 999px;
-            color: #fff;
+            background: #fff;
+            color: #000;
             font-family: var(--vazirt), sans-serif;
             font-size: 14px;
             line-height: 1.4;
+            text-align: center;
             text-decoration: none;
             transition: background-color 180ms ease, color 180ms ease;
           }
 
           .accordion-os-slide-cta:hover {
-            background: rgba(255, 255, 255, 0.94);
-            color: #111;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
           }
 
           .accordion-os-slide-cta:focus-visible {
-            outline: 2px solid #fff;
+            outline: 2px solid #000;
             outline-offset: 3px;
-          }
-
-          .accordion-os-bottom-shade {
-            position: absolute;
-            inset: auto 0 0;
-            z-index: 4;
-            height: clamp(220px, 48%, 420px);
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.34) 42%, transparent 100%);
-            pointer-events: none;
           }
 
           .accordion-os-slide-dots {
             position: absolute;
-            z-index: 6;
+            z-index: 12;
             left: 50%;
             bottom: 18px;
             display: flex;
@@ -780,6 +793,7 @@ export function AccordionOS({
             border: 0;
             border-radius: 9999px;
             background: rgba(255, 255, 255, 0.55);
+            pointer-events: auto;
             cursor: pointer;
             transition: background-color 180ms ease, transform 180ms ease;
           }
@@ -904,6 +918,22 @@ export function AccordionOS({
             overflow-anchor: none;
             padding: 0;
             border-radius: 0;
+          }
+
+          .accordion-os-fullscreen .accordion-os-slide-copy {
+            top: 50%;
+            right: 48px;
+            bottom: auto;
+            width: min(250px, calc(100% - 64px));
+            height: auto;
+            min-height: 0;
+            aspect-ratio: 1;
+            translate: 0 -50%;
+          }
+
+          .accordion-os-fullscreen .accordion-os-slide-copy-inner {
+            min-height: 0;
+            justify-content: center;
           }
 
           .accordion-os-fullscreen .accordion-os-sidebar {

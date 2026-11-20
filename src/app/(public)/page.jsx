@@ -1,14 +1,22 @@
 'use client'
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {AccordionOS} from "@/components/accordionos";
 import { NumberTicker } from "@/components/velora/number-ticker";
 
 
 export default function Home() {
+   const [courseOffset, setCourseOffset] = useState(0);
+   const [recyclingCourse, setRecyclingCourse] = useState(null);
+   const [recycleStarted, setRecycleStarted] = useState(false);
+   const [isCourseFanPaused, setIsCourseFanPaused] = useState(false);
 
    const courseData = [
       {
          name: 'اکسنت',
+         href: '/sub_skills/accent',
          title: 'آموزش لهجه های انگلیسی در سطح نیتیو',
          image: '/pics/courses/Accent.png',
          alt: 'English Accent Course Image',
@@ -22,6 +30,7 @@ export default function Home() {
       },
       {
          name: 'نتفلیکس',
+         href: '/sub_skills/netflix',
          title: 'تقویت مهارت شنیداری با فیلم و سریال',
          image: '/pics/courses/Netflix.png',
          alt: 'English Netflix Course Image',
@@ -35,6 +44,7 @@ export default function Home() {
       },
       {
          name: 'استریت',
+         href: '/sub_skills/netflix',
          title: 'تقویت مکالمه و محاوره ی طبیعی انگلیسی',
          image: '/pics/courses/Street.png',
          alt: 'English Street Course Image',
@@ -48,6 +58,7 @@ export default function Home() {
       },
       {
          name: 'رنگاهنگ',
+         href: '/kids/rangahang',
          title: 'آموزش زبان انگلیسی به کودکان با رنگ و آهنگ',
          image: '/pics/courses/Rangahang.png',
          alt: 'English Rangahang Course Image',
@@ -61,6 +72,7 @@ export default function Home() {
       },
       {
          name: 'بحث آزاد',
+         href: '/sub_skills/free-discussion',
          title: 'کلاس های ویژه ی مکالمه و بحث آزاد',
          image: '/pics/courses/FreeDiscussion.png',
          alt: 'English Free Discussion Course Image',
@@ -74,9 +86,51 @@ export default function Home() {
       },
    ]
 
+   const stats = [
+      { value: 187, title: "زبان آموز" },
+      { value: 7, title: "کشور" },
+      { value: 12, title: "سال تجربه" },
+      { value: 84, title: "دوره آموزشی" },
+   ];
+
+   useEffect(() => {
+      if (isCourseFanPaused) return;
+
+      const interval = window.setInterval(() => {
+         const exitingIndex = (courseOffset + 3) % courseData.length;
+         setRecyclingCourse(courseData[exitingIndex].name);
+         setRecycleStarted(false);
+         setCourseOffset((offset) => (offset + 1) % courseData.length);
+
+         window.requestAnimationFrame(() => setRecycleStarted(true));
+         window.setTimeout(() => {
+            setRecyclingCourse(null);
+            setRecycleStarted(false);
+         }, 750);
+      }, 5000);
+
+      return () => window.clearInterval(interval);
+   }, [courseOffset, isCourseFanPaused]);
+
+   const renderStatCard = (stat) => (
+      <div
+         key={stat.title}
+         className="relative z-30 flex w-full p-5 flex-col items-center justify-between gap-5 rounded-2xl border  bg-gray-100 text-center shadow-xl"
+      >
+         <NumberTicker value={stat.value} locale="fa-IR" className="font-(family-name:--vazirt) z-30 text-5xl font-light leading-none text-slate-900" />
+         <div className="font-(family-name:--vazirt) text-md leading-relaxed text-slate-900">{stat.title}</div>
+      </div>
+   );
+
+   const goToCourse = (index) => {
+      setRecyclingCourse(null);
+      setRecycleStarted(false);
+      setCourseOffset(index);
+   };
+
    return (
       <div className="min-w-full min-h-dvh flex flex-col items-center justify-center overflow-hidden">
-         <div className="w-full min-h-dvh flex flex-col justify-center items-center z-2">
+         <div className="relative w-full min-h-dvh flex flex-col justify-center items-center z-2">
 
             <div className="relative w-full h-svh min-h-svh overflow-hidden flex flex-col justify-start items-center">
 
@@ -87,87 +141,81 @@ export default function Home() {
                      containerHeight="83.333svh"
                      autoPlayInterval={5000}
                   />
-
-                  <div dir="rtl" className="grid h-[15svh] w-full grid-cols-4 gap-2 px-3 pt-2 sm:gap-3 lg:gap-5 lg:px-12">
-                     {[
-                        { value: 157, title: "زبان آموز" },
-                        { value: 7, title: "کشور" },
-                        { value: 12, title: "سال تجربه" },
-                        { value: 84, title: "دوره آموزشی" },
-                     ].map((stat) => (
-                        <div key={stat.title} className="flex min-h-0 flex-row items-center justify-between gap-1 rounded-2xl border border-black/5 bg-white/90 px-5 py-2 text-right shadow-sm backdrop-blur-sm">
-                           <div className="font-(family-name:--vazirb) text-[clamp(0.65rem,1.2vw,1rem)] leading-tight text-black/55">{stat.title}</div>
-                           <NumberTicker
-                              value={stat.value}
-                              locale="fa-IR"
-                              className="font-(family-name:--vazirt) text-[clamp(1.2rem,4vw,3.5rem)] font-light leading-none text-black"
-                           />
-                        </div>
-                     ))}
-                  </div>
-
-
-                  {/*<div className='w-150 flex justify-center items-center flex-col'>*/}
-                  {/*   <div className="relative mb-5 tracking-widest z-1 text-3xl font-light text-white font-(family-name:--motevasel)" dir='rtl'>آموزشگاه زبان های خارجی غزل</div>*/}
-
-                  {/*   <div className='flex gap-5'>*/}
-                  {/*      <button className="relative font-(family-name:--vazirt) z-1 bg-white text-sm text-black px-4 py-2 rounded-xl font-light transition-all ease-custom hover:cursor-pointer hover:scale-105 active:scale-100">*/}
-                  {/*         مشاوره تخصصی*/}
-                  {/*      </button>*/}
-
-                  {/*      <button className="relative font-(family-name:--vazirt) z-1 text-black bg-white border border-white text-sm px-4 py-2 rounded-xl font-light transition-all hover:cursor-pointer hover:scale-105 active:scale-100">*/}
-                  {/*         تعیین سطح*/}
-                  {/*      </button>*/}
-                  {/*   </div>*/}
-                  {/*</div>*/}
                </div>
 
             </div>
 
-            <div id="special-courses" className="z-2 w-full min-h-dvh flex flex-col justify-start items-end py-3 px-10">
-               <div className="w-full text-black py-3 rounded-3xl tracking-widest text-2xl text-center font-(family-name:--vazirt)">
+            <section aria-label="آمار آموزشگاه" dir="rtl" className="absolute left-0 z-50 grid w-full grid-cols-4 gap-x-30 px-10" style={{ top: 'calc(100svh - 180px)' }}>
+               {stats.map(renderStatCard)}
+            </section>
+
+
+            <div id="special-courses" className="z-2 mt-30 w-full min-h-dvh flex flex-col justify-start items-end py-4 px-4 sm:px-10">
+               <div className="w-full text-black text-2xl text-center font-(family-name:--vazirt)">
                   دوره های خاص ما
                </div>
 
-               <div className="w-full flex gap-10 flex-col justify-start items-center">
-                  {
-                     courseData.map((course, index) => (
-                        <div key={index} className={`w-full h-90 ${course.backgroundClass} border rounded-3xl flex gap-5 justify-between`}>
-                           <div className='relative min-w-90 min-h-full rounded-3xl overflow-hidden'>
-                              <Image
-                                 className='object-cover'
-                                 src={course.image}
-                                 alt={course.alt}
-                                 fill
-                                 sizes='(max-width: 640px) 100vw, 400px'
-                                 loading='eager'
-                              />
-                           </div>
+               <div className="special-course-fan" dir="ltr">
+                  {courseData.map((course, index) => {
+                     const slot = (index - courseOffset + 2 + courseData.length) % courseData.length;
+                     const fanPosition = [
+                        { x: '-145%', y: '34px', rotate: '-16deg', depth: '40px' },
+                        { x: '-72%', y: '10px', rotate: '-8deg', depth: '120px' },
+                        { x: '0%', y: '-8px', rotate: '0deg', depth: '220px' },
+                        { x: '72%', y: '10px', rotate: '8deg', depth: '120px' },
+                        { x: '145%', y: '34px', rotate: '16deg', depth: '40px' },
+                     ][slot];
+                     const isEntering = recyclingCourse === course.name && !recycleStarted;
 
-                           <div dir='rtl' className='w-full h-full flex p-7 flex-col gap-5 justify-between items-start font-(family-name:--vazirt)'>
-                              <div className='flex flex-col gap-3'>
-                                 <div className='flex gap-3 items-center'>
-                                    <div className='text-3xl'>دوره ی</div>
-                                    <div className='text-3xl px-4 py-1 text-white font-(family-name:--motevasel) rounded-3xl bg-gradient-to-r from-fuchsia-600 to-pink-600'>{course.name}</div>
-                                 </div>
-                                 <div className='text-black font-semibold text-xl'>{course.title}</div>
-                              </div>
-                              <ul className='text-lg list-disc ps-6'>
-                                 {
-                                    course.content.map((item, index) => (
-                                       <li key={index} className=''>{item}</li>
-                                    ))
-                                 }
-                              </ul>
-                              <div className='flex gap-5'>
-                                 <button className='px-4 py-2 rounded-3xl bg-white text-black cursor-pointer hover:bg-white active:scale-97'>اطلاعات بیشتر</button>
-                                 <button className='px-4 py-2 rounded-3xl bg-white text-black cursor-pointer hover:bg-white active:scale-97'>ثبت نام</button>
-                              </div>
+                     return (
+                        <Link
+                           href={course.href}
+                           key={course.name}
+                           className={`special-course-card group${isEntering ? ' is-entering' : ''}`}
+                           style={{ '--fan-x': fanPosition.x, '--fan-y': fanPosition.y, '--fan-rotate': fanPosition.rotate, '--fan-depth': fanPosition.depth, '--card-order': [0, 2, 4, 2, 0][slot] }}
+                           dir="rtl"
+                           onMouseEnter={() => setIsCourseFanPaused(true)}
+                           onMouseLeave={() => setIsCourseFanPaused(false)}
+                           onFocus={() => setIsCourseFanPaused(true)}
+                           onBlur={() => setIsCourseFanPaused(false)}
+                        >
+                           <Image
+                              className="special-course-card-image"
+                              src={`${course.image}?v=2`}
+                              alt={course.alt}
+                              fill
+                              sizes="(max-width: 640px) 70vw, 275px"
+                              unoptimized
+                           />
+                           <div className="special-course-card-dim" />
+                           <div className="special-course-card-shine" />
+                           <div className="special-course-card-copy font-(family-name:--vazirt)">
+                              <h3 className="font-(family-name:--motevasel) text-4xl sm:text-5xl">{course.name}</h3>
+                              <p className="mt-2 text-sm sm:text-base leading-7 text-white/90">{course.title}</p>
                            </div>
-                        </div>
-                     ))
-                  }
-
+                        </Link>
+                     );
+                  })}
+               </div>
+               <div className="special-course-controls" dir="ltr" aria-label="کنترل اسلایدر دوره ها">
+                  <button type="button" className="special-course-arrow" onClick={() => goToCourse((courseOffset - 1 + courseData.length) % courseData.length)} aria-label="دوره ی قبلی">
+                     <ChevronLeft aria-hidden="true" />
+                  </button>
+                  <div className="special-course-dots" role="group" aria-label="انتخاب دوره">
+                     {courseData.map((course, index) => (
+                        <button
+                           key={course.name}
+                           type="button"
+                           className={`special-course-dot${courseOffset === index ? ' is-active' : ''}`}
+                           onClick={() => goToCourse(index)}
+                           aria-label={`نمایش دوره ی ${course.name}`}
+                           aria-current={courseOffset === index ? 'true' : undefined}
+                        />
+                     ))}
+                  </div>
+                  <button type="button" className="special-course-arrow" onClick={() => goToCourse((courseOffset + 1) % courseData.length)} aria-label="دوره ی بعدی">
+                     <ChevronRight aria-hidden="true" />
+                  </button>
                </div>
             </div>
          </div>
@@ -562,7 +610,7 @@ export default function Home() {
                   </div>
                   <div className="relative bottom-0 mb-5 tracking-widest z-1 text-xl font-light text-white font-(family-name:--motevasel)" dir='rtl'>موسسه زبان های خارجی غزل</div>
                </div>
-               <div className="w-full absolute left-0 bottom-0 text-center text-xs mb-2 text-white font-(family-name:--vazirt)">تمامی حقوق برای آکادمی هامینک محفوظ است</div>
+               <div className="w-full absolute left-0 bottom-0 text-center text-xs mb-2 text-white font-(family-name:--vazirt)">تمامی حقوق برای آموزشگاه زبان های خارجی غزل محفوظ است</div>
 
             </div>
 

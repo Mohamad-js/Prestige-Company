@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide, Rubik_Marker_Hatch, Ramabhadra} from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script, Quicksand, Ms_Madi, Comfortaa, Audiowide, Rubik_Marker_Hatch, Ramabhadra, Righteous, Ephesis, Viga, Julius_Sans_One, Cal_Sans} from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import localFont from 'next/font/local'
@@ -83,6 +83,41 @@ const bold = Ramabhadra({
    display: "swap",
 });
 
+const righteous = Righteous({
+   weight: "400",
+   variable: "--font-righteous",
+   subsets: ["latin"],
+   display: "swap",
+});
+
+const ephesis = Ephesis({
+   weight: "400",
+   variable: "--font-ephesis",
+   subsets: ["latin"],
+   display: "swap",
+});
+
+const viga = Viga({
+   weight: "400",
+   variable: "--font-viga",
+   subsets: ["latin"],
+   display: "swap",
+});
+
+const juliusSansOne = Julius_Sans_One({
+   weight: "400",
+   variable: "--font-julius-sans-one",
+   subsets: ["latin"],
+   display: "swap",
+});
+
+const calSans = Cal_Sans({
+   weight: "400",
+   variable: "--font-cal-sans",
+   subsets: ["latin"],
+   display: "swap",
+});
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata = {
@@ -125,6 +160,11 @@ export default function RootLayout({ children }) {
             ${audiowide.variable}
             ${marker.variable}
             ${bold.variable}
+            ${righteous.variable}
+            ${ephesis.variable}
+            ${viga.variable}
+            ${juliusSansOne.variable}
+            ${calSans.variable}
            antialiased`}
       >
          

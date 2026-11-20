@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import Ham from './ham'
-import { TextHoverEffect } from '@/components/velora/text-hover-effect'
+import GradientText from '@/components/GradientText'
 
 // Keep submenu content beside its parent. Adding a section is now only a data change.
 const navItems = [
@@ -350,29 +350,12 @@ const megaMenus = {
 }
 
 function BrandWordmark() {
-   const [isHovered, setIsHovered] = useState(false)
-   const [pointerPosition, setPointerPosition] = useState(null)
-
    return (
-      <span
-         className={`flex flex-col items-center justify-center ${isHovered ? 'text-white' : ''}`}
-         onPointerEnter={() => setIsHovered(true)}
-         onPointerLeave={() => setIsHovered(false)}
-         onPointerMove={(event) => {
-            const bounds = event.currentTarget.getBoundingClientRect()
-            setPointerPosition({
-               x: ((event.clientX - bounds.left) / bounds.width) * 100,
-               y: ((event.clientY - bounds.top) / bounds.height) * 100,
-            })
-         }}
-      >
-         <TextHoverEffect
-            text="GHAZAL"
-            active={isHovered}
-            pointerPosition={pointerPosition}
-            drawDuration={4}
-            className="h-7 w-32 [--foreground:currentColor] [--brand-from:currentColor] [--brand-via:currentColor] [--brand-to:currentColor]"
-         />
+      <span className="flex items-center justify-center gap-1">
+         <GradientText colors={["#6b00ff", "#ff00f7", "#ff0060"]} animationSpeed={8} variant="flow" className="h-7 w-auto whitespace-nowrap font-(family-name:--font-julius-sans-one) text-base">
+            GHAZAL
+         </GradientText>
+         <span className="whitespace-nowrap font-(family-name:--font-righteous) text-xs">CENTER</span>
       </span>
    )
 }
@@ -393,6 +376,12 @@ function Navbar() {
          const currentScrollY = window.scrollY
          setIsScrolled(currentScrollY > 8)
 
+         if (openMenuId) {
+            setIsVisible(true)
+            previousScrollY.current = currentScrollY
+            return
+         }
+
          if (currentScrollY <= 8) {
             setIsVisible(true)
          } else if (currentScrollY < previousScrollY.current) {
@@ -408,7 +397,13 @@ function Navbar() {
       setIsScrolled(window.scrollY > 8)
       window.addEventListener('scroll', updateScrollState, { passive: true })
       return () => window.removeEventListener('scroll', updateScrollState)
-   }, [])
+   }, [openMenuId])
+
+   useEffect(() => {
+      if (!openMenuId) return
+
+      setIsVisible(true)
+   }, [openMenuId])
 
    const cancelScheduledClose = () => {
       if (closeTimer.current) {
@@ -468,7 +463,7 @@ function Navbar() {
             className={`absolute top-0 p-10 z-50 flex h-15 w-full justify-center items-center gap-x-15 border-0 px-10 transition-all duration-300 ease-out max-[1070px]:invisible ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
             onMouseEnter={cancelScheduledClose}
          >
-            <div className={`w-full flex justify-between flex-row-reverse items-center py-1 px-2 rounded-3xl ${isScrolled ? 'bg-white text-black shadow-sm' : 'bg-white/50 backdrop-blur-xs border  border-white/30 text-black'}`}>
+            <div className={`w-full flex justify-between flex-row-reverse items-center py-1 px-2 rounded-3xl bg-white text-black shadow-lg shadow-black/10`}>
                <div className="flex items-center" dir={language === 'fa' ? 'rtl' : 'ltr'}>
                   {navItems.map((item) => {
                      const hasSubmenu = Boolean(megaMenus[item.id])
@@ -501,7 +496,7 @@ function Navbar() {
                                  {currentItem && (
                                     <span
                                        aria-hidden="true"
-                                       className="absolute inset-1 -z-10 rounded-2xl bg-white/70"
+                                       className="absolute inset-1 -z-10 rounded-2xl bg-black/5"
                                     />
                                  )}
 
@@ -533,6 +528,9 @@ function Navbar() {
                            sizes="40px"
                         />
                      </span>
+                     <GradientText colors={["#6b00ff", "#ff00f7", "#ff0060"]} animationSpeed={8} variant="flow" className="whitespace-nowrap font-(family-name:--font-cal-sans) text-xl">
+                        Ghazal
+                     </GradientText>
                   </Link>
 
                   {/*<button*/}
